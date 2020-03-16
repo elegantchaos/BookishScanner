@@ -14,7 +14,7 @@
 		8B7942F9241F8C1F001B3AE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B7942F8241F8C1F001B3AE7 /* Assets.xcassets */; };
 		8B7942FC241F8C1F001B3AE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B7942FA241F8C1F001B3AE7 /* LaunchScreen.storyboard */; };
 		8B794305241F8CC8001B3AE7 /* BarcodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B794304241F8CC8001B3AE7 /* BarcodeScanner.swift */; };
-		8B794309241F8F6F001B3AE7 /* AddBooksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B794308241F8F6F001B3AE7 /* AddBooksController.swift */; };
+		8B794309241F8F6F001B3AE7 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B794308241F8F6F001B3AE7 /* AddItemViewController.swift */; };
 		8B79430C241F9020001B3AE7 /* Actions in Frameworks */ = {isa = PBXBuildFile; productRef = 8B79430B241F9020001B3AE7 /* Actions */; };
 		8B79430F241F9087001B3AE7 /* ActionsKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8B79430E241F9087001B3AE7 /* ActionsKit */; };
 		8B794319241FA9C0001B3AE7 /* GoogleLookupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B794312241FA9C0001B3AE7 /* GoogleLookupService.swift */; };
@@ -36,6 +36,7 @@
 		8B79433C241FCD1F001B3AE7 /* ConfirmedItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B79433B241FCD1F001B3AE7 /* ConfirmedItemCell.swift */; };
 		8B79433E241FCE1E001B3AE7 /* ConfirmedItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B79433D241FCE1E001B3AE7 /* ConfirmedItemManager.swift */; };
 		8B794340241FCEB4001B3AE7 /* ConfirmedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B79433F241FCEB4001B3AE7 /* ConfirmedItem.swift */; };
+		8B794342241FE85C001B3AE7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B794341241FE85C001B3AE7 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -63,7 +64,7 @@
 		8B7942FD241F8C1F001B3AE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B794303241F8C43001B3AE7 /* Bookish Scanner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Bookish Scanner.entitlements"; sourceTree = "<group>"; };
 		8B794304241F8CC8001B3AE7 /* BarcodeScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScanner.swift; sourceTree = "<group>"; };
-		8B794308241F8F6F001B3AE7 /* AddBooksController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBooksController.swift; sourceTree = "<group>"; };
+		8B794308241F8F6F001B3AE7 /* AddItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		8B794312241FA9C0001B3AE7 /* GoogleLookupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLookupService.swift; sourceTree = "<group>"; };
 		8B794313241FA9C0001B3AE7 /* LookupCandidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupCandidate.swift; sourceTree = "<group>"; };
 		8B794314241FA9C0001B3AE7 /* LookupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupService.swift; sourceTree = "<group>"; };
@@ -79,6 +80,7 @@
 		8B79433B241FCD1F001B3AE7 /* ConfirmedItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmedItemCell.swift; sourceTree = "<group>"; };
 		8B79433D241FCE1E001B3AE7 /* ConfirmedItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmedItemManager.swift; sourceTree = "<group>"; };
 		8B79433F241FCEB4001B3AE7 /* ConfirmedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmedItem.swift; sourceTree = "<group>"; };
+		8B794341241FE85C001B3AE7 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +102,6 @@
 		8B7942E3241F8C1E001B3AE7 = {
 			isa = PBXGroup;
 			children = (
-				8B794339241FCC87001B3AE7 /* Default-568h@2x.png */,
 				8B7942EE241F8C1E001B3AE7 /* BookishScanner */,
 				8B7942ED241F8C1E001B3AE7 /* Products */,
 				8B794335241FBB53001B3AE7 /* Frameworks */,
@@ -126,7 +127,7 @@
 				8B7942F3241F8C1E001B3AE7 /* ConfirmedItemsController.swift */,
 				8B79433B241FCD1F001B3AE7 /* ConfirmedItemCell.swift */,
 				8B794304241F8CC8001B3AE7 /* BarcodeScanner.swift */,
-				8B794308241F8F6F001B3AE7 /* AddBooksController.swift */,
+				8B794308241F8F6F001B3AE7 /* AddItemViewController.swift */,
 				8B794316241FA9C0001B3AE7 /* AmazonLookupService.swift */,
 				8B794318241FA9C0001B3AE7 /* ExistingCollectionLookupService.swift */,
 				8B794312241FA9C0001B3AE7 /* GoogleLookupService.swift */,
@@ -140,8 +141,10 @@
 				8B794317241FA9C0001B3AE7 /* LookupSession.swift */,
 				8B7942F5241F8C1E001B3AE7 /* Main.storyboard */,
 				8B7942F8241F8C1F001B3AE7 /* Assets.xcassets */,
+				8B794339241FCC87001B3AE7 /* Default-568h@2x.png */,
 				8B7942FA241F8C1F001B3AE7 /* LaunchScreen.storyboard */,
 				8B7942FD241F8C1F001B3AE7 /* Info.plist */,
+				8B794341241FE85C001B3AE7 /* Localizable.strings */,
 			);
 			path = BookishScanner;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B794342241FE85C001B3AE7 /* Localizable.strings in Resources */,
 				8B7942FC241F8C1F001B3AE7 /* LaunchScreen.storyboard in Resources */,
 				8B79433A241FCC87001B3AE7 /* Default-568h@2x.png in Resources */,
 				8B7942F9241F8C1F001B3AE7 /* Assets.xcassets in Resources */,
@@ -253,7 +257,7 @@
 				8B794305241F8CC8001B3AE7 /* BarcodeScanner.swift in Sources */,
 				8B794319241FA9C0001B3AE7 /* GoogleLookupService.swift in Sources */,
 				8B79433E241FCE1E001B3AE7 /* ConfirmedItemManager.swift in Sources */,
-				8B794309241F8F6F001B3AE7 /* AddBooksController.swift in Sources */,
+				8B794309241F8F6F001B3AE7 /* AddItemViewController.swift in Sources */,
 				8B794340241FCEB4001B3AE7 /* ConfirmedItem.swift in Sources */,
 				8B7942F0241F8C1E001B3AE7 /* Application.swift in Sources */,
 				8B7942F2241F8C1E001B3AE7 /* SceneDelegate.swift in Sources */,

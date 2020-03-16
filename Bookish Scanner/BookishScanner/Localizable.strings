@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  Bookish
+
+  Created by Sam Deane on 14/02/2019.
+  Copyright © 2019 Elegant Chaos Limited. All rights reserved.
+*/
+
+scanner.startup = "Scan a barcode or enter an ISBN/EAN/title.";
+
+candidate.lookup.initial = "";
+candidate.lookup.valid = "Found ISBN {search}…";
+candidate.lookup.invalid = "Unknown format {search}!";
+candidate.lookup.start = "Looking up {search}…";
+candidate.found.none = "No candidates found";
+candidate.found.singular = "1 candidate found:";
+candidate.found.plural = "{count} candidates found:";
+candidate.found.source = "source: {source}";
+
+search.initial = "";
+
+
+action.ViewCandidate.title = "View";
+action.ViewCandidate.short = "View";
+//action.ViewCandidate.icon = "eye";
+
+action.AddCandidate.title = "Add";
+action.AddCandidate.short = "Add";
+//action.AddCandidate.icon = "plus";
+

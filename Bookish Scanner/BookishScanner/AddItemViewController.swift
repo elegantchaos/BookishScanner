@@ -7,22 +7,7 @@ import UIKit
 import Actions
 import ActionsKit
 
-//import BookishModel
-
-class AddBooksController: UIViewController, BarcodeScannerDelegate {
-//    let scene: CollectionScene
-    
-//    required init?(with context: ActionContext, coder: NSCoder) {
-////        guard let scene = context[ActionContext.rootKey] as? CollectionScene else {
-////            return nil
-////        }
-////        self.scene = scene
-//        super.init(coder: coder)
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        return nil
-//    }
+class AddItemViewController: UIViewController, BarcodeScannerDelegate {
     
     @IBOutlet weak var imageView: UIView!
     @IBOutlet weak var candidatesTable: UITableView!
@@ -37,7 +22,6 @@ class AddBooksController: UIViewController, BarcodeScannerDelegate {
     var candidates: [LookupCandidate] = []
     var imageLayer: CALayer?
     var lookupManager: LookupManager? = nil
-//    var collection: CollectionContainer? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,17 +30,20 @@ class AddBooksController: UIViewController, BarcodeScannerDelegate {
         lookupSpinner.isHidden = true
         candidatesTable.isHidden = true
         lookupManager = Application.shared.lookupManager
-//        collection = scene.collection
-        
+        candidatesTable.dataSource = self
+        candidatesTable.delegate = self
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if let scanner = BarcodeScanner(delegate: self) {
             self.scanner = scanner
             scanner.run()
         }
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
-        candidatesTable.delegate = nil
-        candidatesTable.dataSource = nil
         scanner?.shutdown()
         scanner = nil
         lookup = nil
@@ -147,7 +134,7 @@ class AddBooksController: UIViewController, BarcodeScannerDelegate {
 }
 
 
-extension AddBooksController: UITableViewDelegate, UITableViewDataSource {
+extension AddItemViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

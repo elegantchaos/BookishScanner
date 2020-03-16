@@ -11,6 +11,10 @@ import UIKit
 class ConfirmedItemsController: UITableViewController {
     var itemStore: ConfirmedItemsManager?
     
+    @IBAction func handleEdit(_ sender: Any) {
+        tableView.isEditing = !tableView.isEditing
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         itemStore = Application.shared.itemStore

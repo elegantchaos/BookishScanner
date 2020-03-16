@@ -16,11 +16,20 @@ class Application: BasicApplication {
     let itemStore = ConfirmedItemsManager()
     
     override func setUp(withOptions options: LaunchOptions) {
+        super.setUp(withOptions: options)
+        
         itemStore.load(fromStoreKey: stateKey)
         if itemStore.count == 0 {
             itemStore.add(item: "Item 1")
             itemStore.add(item: "Item 2")
         }
+        
+        lookupManager.register(service: GoogleLookupService(name: "Google"))
+        
+        actionManager.register([
+            AddCandidateAction(),
+            ViewCandidateAction()
+        ])
     }
     
     override func tearDown() {

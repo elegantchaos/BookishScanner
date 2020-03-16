@@ -123,3 +123,10 @@ extension ActionKey {
 //        }
 //    }
 //}
+
+public class AddCandidateAction: Action {
+}
+
+public class ViewCandidateAction: Action {
+    
+}

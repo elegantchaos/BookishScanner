@@ -4,7 +4,6 @@
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 import Foundation
-//import Datastore
 import Logger
 
 let lookupChannel = Channel("com.elegantchaos.bookish.model.Lookup")
