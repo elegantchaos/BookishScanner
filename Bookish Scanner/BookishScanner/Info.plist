@@ -20,6 +20,8 @@
 	<string>1</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
+	<key>NSCameraUsageDescription</key>
+	<string>This application uses the camera to scan barcodes.</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIApplicationSceneManifest</key>

@@ -30,10 +30,26 @@
 		8B79432B241FB2A8001B3AE7 /* CandidateRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B79432A241FB2A8001B3AE7 /* CandidateRow.swift */; };
 		8B79432D241FB46C001B3AE7 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B79432C241FB46C001B3AE7 /* ImageCache.swift */; };
 		8B79432F241FB518001B3AE7 /* LookupAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B79432E241FB518001B3AE7 /* LookupAction.swift */; };
+		8B794337241FBB53001B3AE7 /* LocalizationShared in Frameworks */ = {isa = PBXBuildFile; productRef = 8B794336241FBB53001B3AE7 /* LocalizationShared */; };
+		8B794338241FBB53001B3AE7 /* LocalizationShared in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 8B794336241FBB53001B3AE7 /* LocalizationShared */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		8B794334241FBABE001B3AE7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8B794338241FBB53001B3AE7 /* LocalizationShared in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		8B7942EC241F8C1E001B3AE7 /* Bookish Scanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bookish Scanner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B7942EC241F8C1E001B3AE7 /* BookishScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookishScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7942EF241F8C1E001B3AE7 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		8B7942F1241F8C1E001B3AE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8B7942F3241F8C1E001B3AE7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B794337241FBB53001B3AE7 /* LocalizationShared in Frameworks */,
 				8B79430C241F9020001B3AE7 /* Actions in Frameworks */,
 				8B794327241FB01A001B3AE7 /* ApplicationExtensions in Frameworks */,
 				8B79430F241F9087001B3AE7 /* ActionsKit in Frameworks */,
@@ -75,20 +92,21 @@
 		8B7942E3241F8C1E001B3AE7 = {
 			isa = PBXGroup;
 			children = (
-				8B7942EE241F8C1E001B3AE7 /* Bookish Scanner */,
+				8B7942EE241F8C1E001B3AE7 /* BookishScanner */,
 				8B7942ED241F8C1E001B3AE7 /* Products */,
+				8B794335241FBB53001B3AE7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		8B7942ED241F8C1E001B3AE7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8B7942EC241F8C1E001B3AE7 /* Bookish Scanner.app */,
+				8B7942EC241F8C1E001B3AE7 /* BookishScanner.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8B7942EE241F8C1E001B3AE7 /* Bookish Scanner */ = {
+		8B7942EE241F8C1E001B3AE7 /* BookishScanner */ = {
 			isa = PBXGroup;
 			children = (
 				8B794303241F8C43001B3AE7 /* Bookish Scanner.entitlements */,
@@ -113,33 +131,42 @@
 				8B7942FA241F8C1F001B3AE7 /* LaunchScreen.storyboard */,
 				8B7942FD241F8C1F001B3AE7 /* Info.plist */,
 			);
-			path = "Bookish Scanner";
+			path = BookishScanner;
+			sourceTree = "<group>";
+		};
+		8B794335241FBB53001B3AE7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8B7942EB241F8C1E001B3AE7 /* Bookish Scanner */ = {
+		8B7942EB241F8C1E001B3AE7 /* BookishScanner */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8B794300241F8C1F001B3AE7 /* Build configuration list for PBXNativeTarget "Bookish Scanner" */;
+			buildConfigurationList = 8B794300241F8C1F001B3AE7 /* Build configuration list for PBXNativeTarget "BookishScanner" */;
 			buildPhases = (
 				8B7942E8241F8C1E001B3AE7 /* Sources */,
 				8B7942E9241F8C1E001B3AE7 /* Frameworks */,
 				8B7942EA241F8C1E001B3AE7 /* Resources */,
+				8B794334241FBABE001B3AE7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Bookish Scanner";
+			name = BookishScanner;
 			packageProductDependencies = (
 				8B79430B241F9020001B3AE7 /* Actions */,
 				8B79430E241F9087001B3AE7 /* ActionsKit */,
 				8B794323241FAF85001B3AE7 /* ISBN */,
 				8B794326241FB01A001B3AE7 /* ApplicationExtensions */,
+				8B794336241FBB53001B3AE7 /* LocalizationShared */,
 			);
 			productName = "Bookish Scanner";
-			productReference = 8B7942EC241F8C1E001B3AE7 /* Bookish Scanner.app */;
+			productReference = 8B7942EC241F8C1E001B3AE7 /* BookishScanner.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -157,7 +184,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8B7942E7241F8C1E001B3AE7 /* Build configuration list for PBXProject "Bookish Scanner" */;
+			buildConfigurationList = 8B7942E7241F8C1E001B3AE7 /* Build configuration list for PBXProject "BookishScanner" */;
 			compatibilityVersion = "Xcode 11.4";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -171,12 +198,13 @@
 				8B79430D241F9087001B3AE7 /* XCRemoteSwiftPackageReference "ActionsKit" */,
 				8B794322241FAF85001B3AE7 /* XCRemoteSwiftPackageReference "ISBN" */,
 				8B794325241FB01A001B3AE7 /* XCRemoteSwiftPackageReference "ApplicationExtensions" */,
+				8B794330241FBABE001B3AE7 /* XCRemoteSwiftPackageReference "Localization" */,
 			);
 			productRefGroup = 8B7942ED241F8C1E001B3AE7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8B7942EB241F8C1E001B3AE7 /* Bookish Scanner */,
+				8B7942EB241F8C1E001B3AE7 /* BookishScanner */,
 			);
 		};
 /* End PBXProject section */
@@ -399,7 +427,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8B7942E7241F8C1E001B3AE7 /* Build configuration list for PBXProject "Bookish Scanner" */ = {
+		8B7942E7241F8C1E001B3AE7 /* Build configuration list for PBXProject "BookishScanner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8B7942FE241F8C1F001B3AE7 /* Debug */,
@@ -408,7 +436,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8B794300241F8C1F001B3AE7 /* Build configuration list for PBXNativeTarget "Bookish Scanner" */ = {
+		8B794300241F8C1F001B3AE7 /* Build configuration list for PBXNativeTarget "BookishScanner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8B794301241F8C1F001B3AE7 /* Debug */,
@@ -452,6 +480,14 @@
 				minimumVersion = 1.0.7;
 			};
 		};
+		8B794330241FBABE001B3AE7 /* XCRemoteSwiftPackageReference "Localization" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elegantchaos/Localization.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -474,6 +510,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8B794325241FB01A001B3AE7 /* XCRemoteSwiftPackageReference "ApplicationExtensions" */;
 			productName = ApplicationExtensions;
+		};
+		8B794336241FBB53001B3AE7 /* LocalizationShared */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = LocalizationShared;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

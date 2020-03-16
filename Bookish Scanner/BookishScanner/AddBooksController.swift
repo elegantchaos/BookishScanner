@@ -9,20 +9,20 @@ import ActionsKit
 
 //import BookishModel
 
-class AddBooksController: UIViewController, BarcodeScannerDelegate, DecodableWithContextViewController {
+class AddBooksController: UIViewController, BarcodeScannerDelegate {
 //    let scene: CollectionScene
     
-    required init?(with context: ActionContext, coder: NSCoder) {
-//        guard let scene = context[ActionContext.rootKey] as? CollectionScene else {
-//            return nil
-//        }
-//        self.scene = scene
-        super.init(coder: coder)
-    }
-
-    required init?(coder: NSCoder) {
-        return nil
-    }
+//    required init?(with context: ActionContext, coder: NSCoder) {
+////        guard let scene = context[ActionContext.rootKey] as? CollectionScene else {
+////            return nil
+////        }
+////        self.scene = scene
+//        super.init(coder: coder)
+//    }
+//
+//    required init?(coder: NSCoder) {
+//        return nil
+//    }
     
     @IBOutlet weak var imageView: UIView!
     @IBOutlet weak var candidatesTable: UITableView!
