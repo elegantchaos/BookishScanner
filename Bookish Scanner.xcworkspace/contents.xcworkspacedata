@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Bookish Scanner/Bookish Scanner.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../ISBN">
+   </FileRef>
+   <FileRef
+      location = "group:../ApplicationExtensions">
+   </FileRef>
+   <FileRef
+      location = "group:../Actions">
+   </FileRef>
+   <FileRef
+      location = "group:../ActionsKit">
+   </FileRef>
+</Workspace>
