@@ -11,6 +11,7 @@ public class LookupSession {
         case starting
         case foundCandidate(LookupCandidate)
         case failed(LookupService)
+        case cancelling
         case done
     }
     
@@ -50,6 +51,7 @@ public class LookupSession {
     
     public func cancel() {
         manager.lockQueue.async {
+            self.callback(state: .cancelling)
             self.callback = nil
             for service in self.running {
                 service.cancel()

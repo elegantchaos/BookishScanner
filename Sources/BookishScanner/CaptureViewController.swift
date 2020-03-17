@@ -7,7 +7,7 @@ import UIKit
 import Actions
 import ActionsKit
 
-class AddItemViewController: UIViewController, BarcodeScannerDelegate {
+class CaptureViewController: UIViewController, BarcodeScannerDelegate {
     
     @IBOutlet weak var imageView: UIView!
     @IBOutlet weak var candidatesTable: UITableView!
@@ -20,6 +20,7 @@ class AddItemViewController: UIViewController, BarcodeScannerDelegate {
     var detected: String = ""
     var lookup: LookupSession? = nil
     var candidates: [LookupCandidate] = []
+    var lookupQuery = ""
     var imageLayer: CALayer?
     var lookupManager: LookupManager? = nil
     
@@ -28,27 +29,29 @@ class AddItemViewController: UIViewController, BarcodeScannerDelegate {
         
         barcodeView.text = "scanner.startup".localized
         lookupSpinner.isHidden = true
+        imageView.isHidden = true
         candidatesTable.isHidden = true
         lookupManager = Application.shared.lookupManager
         candidatesTable.dataSource = self
         candidatesTable.delegate = self
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let scanner = BarcodeScanner(delegate: self) {
+            imageView.isHidden = false
             self.scanner = scanner
             scanner.run()
         }
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         scanner?.shutdown()
         scanner = nil
         lookup = nil
         imageLayer = nil
-
+        
         super.viewWillDisappear(animated)
     }
     
@@ -83,7 +86,8 @@ class AddItemViewController: UIViewController, BarcodeScannerDelegate {
     
     func lookup(text: String) {
         lookup?.cancel()
-        if let manager = lookupManager /**, let collection = collection*/ {
+        if let manager = lookupManager {
+            lookupQuery = text
             lookup = manager.lookup(query: text) { (session, state) in
                 self.lookupUpdate(session: session, state: state)
             }
@@ -92,49 +96,57 @@ class AddItemViewController: UIViewController, BarcodeScannerDelegate {
     
     func lookupUpdate(session: LookupSession, state: LookupSession.State) {
         switch state {
-        case .starting:
-            barcodeView.text = "candidate.lookup.start".localized(with: ["search": session.search])
-            lookupSpinner.startAnimating()
-            lookupSpinner.isHidden = false
-            candidates.removeAll()
-            candidatesTable.isHidden = true
-            candidatesTable.reloadData()
-
-        case .done:
-            barcodeView.text = "candidate.found".localized(count: candidates.count)
-            lookupSpinner.stopAnimating()
-            lookupSpinner.isHidden = true
-
-        case .foundCandidate(let candidate):
-            let row = IndexPath(row: candidates.count, section: 0)
-            candidates.append(candidate)
-            candidatesTable.isHidden = false
-            candidatesTable.insertRows(at: [row], with: .bottom)
-            if candidatesTable.indexPathForSelectedRow == nil {
-                candidatesTable.selectRow(at: row, animated: true, scrollPosition: .bottom)
+            case .starting:
+                barcodeView.text = "candidate.lookup.start".localized(with: ["search": session.search])
+                lookupSpinner.startAnimating()
+                lookupSpinner.isHidden = false
+                candidates.removeAll()
+                candidatesTable.isHidden = true
+                candidatesTable.reloadData()
+            
+            case .done:
+                barcodeView.text = "candidate.found".localized(count: candidates.count)
+                lookupSpinner.stopAnimating()
+                lookupSpinner.isHidden = true
+            
+            case .foundCandidate(let candidate):
+                let row = IndexPath(row: candidates.count, section: 0)
+                candidates.append(candidate)
+                candidatesTable.isHidden = false
+                candidatesTable.insertRows(at: [row], with: .bottom)
+                if candidatesTable.indexPathForSelectedRow == nil {
+                    candidatesTable.selectRow(at: row, animated: true, scrollPosition: .bottom)
             }
-
-        default:
-            break
+            
+            case .cancelling:
+                candidatesTable.isHidden = true
+            
+            default:
+                break
         }
     }
     
-        @IBAction func doSearch(_ sender: Any) {
+    @IBAction func doSearch(_ sender: Any) {
         searchField.resignFirstResponder()
         if let search = searchField.text {
             switch search {
-            case "test":
-                detected(barcode: "9781408832240")
-                lookup(text: "9781408832240")
-            default:
-                lookup(text: search)
+                case "test":
+                    detected(barcode: "9781408832240")
+                    lookup(text: "9781408832240")
+                default:
+                    lookup(text: search)
             }
         }
+    }
+    
+    @IBAction func textChanged(_ sender: Any) {
+        lookup?.cancel()
+        candidatesTable.isHidden = lookupQuery.isEmpty || (lookupQuery != searchField.text)
     }
 }
 
 
-extension AddItemViewController: UITableViewDelegate, UITableViewDataSource {
+extension CaptureViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -142,7 +154,7 @@ extension AddItemViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return candidates.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "candidate", for: indexPath) as! CandidateRow
         let candidate = candidates[indexPath.row]

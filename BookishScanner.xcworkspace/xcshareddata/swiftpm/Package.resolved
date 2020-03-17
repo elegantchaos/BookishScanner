@@ -38,12 +38,21 @@
         }
       },
       {
-        "package": "Localization",
-        "repositoryURL": "https://github.com/elegantchaos/Localization",
+        "package": "ISBN",
+        "repositoryURL": "https://github.com/elegantchaos/ISBN.git",
         "state": {
           "branch": null,
-          "revision": "b060e37b1596f2950fa853e0efd77492bfbb3a01",
-          "version": "1.0.2"
+          "revision": "536c1a0c5bc077043b2743013421ae41166bcde9",
+          "version": "1.0.0"
+        }
+      },
+      {
+        "package": "Localization",
+        "repositoryURL": "https://github.com/elegantchaos/Localization.git",
+        "state": {
+          "branch": null,
+          "revision": "c7e9058785748455314cd3b5bedc300d17bc287f",
+          "version": "1.0.3"
         }
       },
       {

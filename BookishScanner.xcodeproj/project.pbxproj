@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B1912EA242129C600CD7A86 /* Capture.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B1912E92421278B00CD7A86 /* Capture.storyboard */; };
 		8B7942F0241F8C1E001B3AE7 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7942EF241F8C1E001B3AE7 /* Application.swift */; };
 		8B7942F2241F8C1E001B3AE7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7942F1241F8C1E001B3AE7 /* SceneDelegate.swift */; };
 		8B7942F4241F8C1E001B3AE7 /* ConfirmedItemsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7942F3241F8C1E001B3AE7 /* ConfirmedItemsController.swift */; };
@@ -14,7 +15,7 @@
 		8B7942F9241F8C1F001B3AE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B7942F8241F8C1F001B3AE7 /* Assets.xcassets */; };
 		8B7942FC241F8C1F001B3AE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B7942FA241F8C1F001B3AE7 /* LaunchScreen.storyboard */; };
 		8B794305241F8CC8001B3AE7 /* BarcodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B794304241F8CC8001B3AE7 /* BarcodeScanner.swift */; };
-		8B794309241F8F6F001B3AE7 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B794308241F8F6F001B3AE7 /* AddItemViewController.swift */; };
+		8B794309241F8F6F001B3AE7 /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B794308241F8F6F001B3AE7 /* CaptureViewController.swift */; };
 		8B79430C241F9020001B3AE7 /* Actions in Frameworks */ = {isa = PBXBuildFile; productRef = 8B79430B241F9020001B3AE7 /* Actions */; };
 		8B79430F241F9087001B3AE7 /* ActionsKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8B79430E241F9087001B3AE7 /* ActionsKit */; };
 		8B794319241FA9C0001B3AE7 /* GoogleLookupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B794312241FA9C0001B3AE7 /* GoogleLookupService.swift */; };
@@ -30,8 +31,6 @@
 		8B79432B241FB2A8001B3AE7 /* CandidateRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B79432A241FB2A8001B3AE7 /* CandidateRow.swift */; };
 		8B79432D241FB46C001B3AE7 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B79432C241FB46C001B3AE7 /* ImageCache.swift */; };
 		8B79432F241FB518001B3AE7 /* LookupAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B79432E241FB518001B3AE7 /* LookupAction.swift */; };
-		8B794337241FBB53001B3AE7 /* LocalizationShared in Frameworks */ = {isa = PBXBuildFile; productRef = 8B794336241FBB53001B3AE7 /* LocalizationShared */; };
-		8B794338241FBB53001B3AE7 /* LocalizationShared in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 8B794336241FBB53001B3AE7 /* LocalizationShared */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		8B79433A241FCC87001B3AE7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B794339241FCC87001B3AE7 /* Default-568h@2x.png */; };
 		8B79433C241FCD1F001B3AE7 /* ConfirmedItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B79433B241FCD1F001B3AE7 /* ConfirmedItemCell.swift */; };
 		8B79433E241FCE1E001B3AE7 /* ConfirmedItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B79433D241FCE1E001B3AE7 /* ConfirmedItemManager.swift */; };
@@ -46,7 +45,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8B794338241FBB53001B3AE7 /* LocalizationShared in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -54,6 +52,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8B1912E92421278B00CD7A86 /* Capture.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Capture.storyboard; path = /Users/developer/Projects/BookishScanner/Sources/BookishScanner/Base.lproj/Capture.storyboard; sourceTree = "<absolute>"; };
 		8B7942EC241F8C1E001B3AE7 /* BookishScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookishScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7942EF241F8C1E001B3AE7 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		8B7942F1241F8C1E001B3AE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,7 +63,7 @@
 		8B7942FD241F8C1F001B3AE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B794303241F8C43001B3AE7 /* Bookish Scanner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Bookish Scanner.entitlements"; sourceTree = "<group>"; };
 		8B794304241F8CC8001B3AE7 /* BarcodeScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScanner.swift; sourceTree = "<group>"; };
-		8B794308241F8F6F001B3AE7 /* AddItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		8B794308241F8F6F001B3AE7 /* CaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
 		8B794312241FA9C0001B3AE7 /* GoogleLookupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLookupService.swift; sourceTree = "<group>"; };
 		8B794313241FA9C0001B3AE7 /* LookupCandidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupCandidate.swift; sourceTree = "<group>"; };
 		8B794314241FA9C0001B3AE7 /* LookupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupService.swift; sourceTree = "<group>"; };
@@ -88,7 +87,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B794337241FBB53001B3AE7 /* LocalizationShared in Frameworks */,
 				8B79430C241F9020001B3AE7 /* Actions in Frameworks */,
 				8B794327241FB01A001B3AE7 /* ApplicationExtensions in Frameworks */,
 				8B79430F241F9087001B3AE7 /* ActionsKit in Frameworks */,
@@ -119,34 +117,36 @@
 		8B7942EE241F8C1E001B3AE7 /* BookishScanner */ = {
 			isa = PBXGroup;
 			children = (
-				8B794303241F8C43001B3AE7 /* Bookish Scanner.entitlements */,
-				8B7942EF241F8C1E001B3AE7 /* Application.swift */,
-				8B79433D241FCE1E001B3AE7 /* ConfirmedItemManager.swift */,
-				8B79433F241FCEB4001B3AE7 /* ConfirmedItem.swift */,
-				8B7942F1241F8C1E001B3AE7 /* SceneDelegate.swift */,
-				8B7942F3241F8C1E001B3AE7 /* ConfirmedItemsController.swift */,
-				8B79433B241FCD1F001B3AE7 /* ConfirmedItemCell.swift */,
-				8B794304241F8CC8001B3AE7 /* BarcodeScanner.swift */,
-				8B794308241F8F6F001B3AE7 /* AddItemViewController.swift */,
 				8B794316241FA9C0001B3AE7 /* AmazonLookupService.swift */,
+				8B7942EF241F8C1E001B3AE7 /* Application.swift */,
+				8B7942F8241F8C1F001B3AE7 /* Assets.xcassets */,
+				8B794304241F8CC8001B3AE7 /* BarcodeScanner.swift */,
+				8B794303241F8C43001B3AE7 /* Bookish Scanner.entitlements */,
+				8B79432A241FB2A8001B3AE7 /* CandidateRow.swift */,
+				8B1912E92421278B00CD7A86 /* Capture.storyboard */,
+				8B794308241F8F6F001B3AE7 /* CaptureViewController.swift */,
+				8B79433F241FCEB4001B3AE7 /* ConfirmedItem.swift */,
+				8B79433B241FCD1F001B3AE7 /* ConfirmedItemCell.swift */,
+				8B79433D241FCE1E001B3AE7 /* ConfirmedItemManager.swift */,
+				8B7942F3241F8C1E001B3AE7 /* ConfirmedItemsController.swift */,
+				8B794320241FABD6001B3AE7 /* DataFetcher.swift */,
+				8B794339241FCC87001B3AE7 /* Default-568h@2x.png */,
 				8B794318241FA9C0001B3AE7 /* ExistingCollectionLookupService.swift */,
 				8B794312241FA9C0001B3AE7 /* GoogleLookupService.swift */,
+				8B79432C241FB46C001B3AE7 /* ImageCache.swift */,
+				8B7942FD241F8C1F001B3AE7 /* Info.plist */,
+				8B7942FA241F8C1F001B3AE7 /* LaunchScreen.storyboard */,
+				8B794341241FE85C001B3AE7 /* Localizable.strings */,
+				8B79432E241FB518001B3AE7 /* LookupAction.swift */,
 				8B794313241FA9C0001B3AE7 /* LookupCandidate.swift */,
 				8B794315241FA9C0001B3AE7 /* LookupManager.swift */,
-				8B79432E241FB518001B3AE7 /* LookupAction.swift */,
-				8B79432C241FB46C001B3AE7 /* ImageCache.swift */,
-				8B79432A241FB2A8001B3AE7 /* CandidateRow.swift */,
 				8B794314241FA9C0001B3AE7 /* LookupService.swift */,
-				8B794320241FABD6001B3AE7 /* DataFetcher.swift */,
 				8B794317241FA9C0001B3AE7 /* LookupSession.swift */,
 				8B7942F5241F8C1E001B3AE7 /* Main.storyboard */,
-				8B7942F8241F8C1F001B3AE7 /* Assets.xcassets */,
-				8B794339241FCC87001B3AE7 /* Default-568h@2x.png */,
-				8B7942FA241F8C1F001B3AE7 /* LaunchScreen.storyboard */,
-				8B7942FD241F8C1F001B3AE7 /* Info.plist */,
-				8B794341241FE85C001B3AE7 /* Localizable.strings */,
+				8B7942F1241F8C1E001B3AE7 /* SceneDelegate.swift */,
 			);
-			path = BookishScanner;
+			name = BookishScanner;
+			path = Sources/BookishScanner;
 			sourceTree = "<group>";
 		};
 		8B794335241FBB53001B3AE7 /* Frameworks */ = {
@@ -178,7 +178,6 @@
 				8B79430E241F9087001B3AE7 /* ActionsKit */,
 				8B794323241FAF85001B3AE7 /* ISBN */,
 				8B794326241FB01A001B3AE7 /* ApplicationExtensions */,
-				8B794336241FBB53001B3AE7 /* LocalizationShared */,
 			);
 			productName = "Bookish Scanner";
 			productReference = 8B7942EC241F8C1E001B3AE7 /* BookishScanner.app */;
@@ -234,6 +233,7 @@
 				8B79433A241FCC87001B3AE7 /* Default-568h@2x.png in Resources */,
 				8B7942F9241F8C1F001B3AE7 /* Assets.xcassets in Resources */,
 				8B7942F7241F8C1E001B3AE7 /* Main.storyboard in Resources */,
+				8B1912EA242129C600CD7A86 /* Capture.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,7 +257,7 @@
 				8B794305241F8CC8001B3AE7 /* BarcodeScanner.swift in Sources */,
 				8B794319241FA9C0001B3AE7 /* GoogleLookupService.swift in Sources */,
 				8B79433E241FCE1E001B3AE7 /* ConfirmedItemManager.swift in Sources */,
-				8B794309241F8F6F001B3AE7 /* AddItemViewController.swift in Sources */,
+				8B794309241F8F6F001B3AE7 /* CaptureViewController.swift in Sources */,
 				8B794340241FCEB4001B3AE7 /* ConfirmedItem.swift in Sources */,
 				8B7942F0241F8C1E001B3AE7 /* Application.swift in Sources */,
 				8B7942F2241F8C1E001B3AE7 /* SceneDelegate.swift in Sources */,
@@ -408,10 +408,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "BookishScanner/Bookish Scanner.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Sources/BookishScanner/Bookish Scanner.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2H48644JM2;
-				INFOPLIST_FILE = BookishScanner/Info.plist;
+				INFOPLIST_FILE = Sources/BookishScanner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -428,10 +428,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "BookishScanner/Bookish Scanner.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Sources/BookishScanner/Bookish Scanner.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2H48644JM2;
-				INFOPLIST_FILE = BookishScanner/Info.plist;
+				INFOPLIST_FILE = Sources/BookishScanner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -505,7 +505,7 @@
 			repositoryURL = "https://github.com/elegantchaos/Localization.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.2;
+				minimumVersion = 1.0.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -530,10 +530,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8B794325241FB01A001B3AE7 /* XCRemoteSwiftPackageReference "ApplicationExtensions" */;
 			productName = ApplicationExtensions;
-		};
-		8B794336241FBB53001B3AE7 /* LocalizationShared */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = LocalizationShared;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
