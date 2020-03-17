@@ -15,6 +15,8 @@ class CaptureViewController: UIViewController, BarcodeScannerDelegate {
     @IBOutlet weak var lookupSpinner: UIActivityIndicatorView!
     @IBOutlet weak var searchField: UITextField!
     @IBOutlet weak var overlayView: UIView!
+    @IBOutlet weak var barcodeButton: UIButton!
+    @IBOutlet weak var imageCandidateStack: UIStackView!
     
     var scanner: BarcodeScanner? = nil
     var detected: String = ""
@@ -29,6 +31,7 @@ class CaptureViewController: UIViewController, BarcodeScannerDelegate {
         
         lookupSpinner.isHidden = true
         imageView.isHidden = true
+        barcodeButton.isEnabled = false
         lookupManager = Application.shared.lookupManager
         candidatesTable.dataSource = self
         candidatesTable.delegate = self
@@ -37,8 +40,10 @@ class CaptureViewController: UIViewController, BarcodeScannerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         if let scanner = BarcodeScanner(delegate: self) {
             imageView.isHidden = false
+            barcodeButton.isEnabled = true
             self.scanner = scanner
             scanner.run()
         }
@@ -51,6 +56,13 @@ class CaptureViewController: UIViewController, BarcodeScannerDelegate {
         imageLayer = nil
         
         super.viewWillDisappear(animated)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        if let window = view.window {
+            imageCandidateStack.axis = window.frame.width > window.frame.height ? .horizontal : .vertical
+        }
+        super.viewWillLayoutSubviews()
     }
     
     override func viewDidLayoutSubviews() {
@@ -75,10 +87,10 @@ class CaptureViewController: UIViewController, BarcodeScannerDelegate {
     }
     
     func attach(layer: CALayer) {
-        layer.frame = view.bounds
         imageView.layer.addSublayer(layer)
         layer.anchorPoint = .zero
         layer.position = .zero
+        layer.frame = CGRect(origin: .zero, size: imageView.frame.size)
         imageLayer = layer
     }
     
@@ -107,14 +119,15 @@ class CaptureViewController: UIViewController, BarcodeScannerDelegate {
             
             case .foundCandidate(let candidate):
                 let row = IndexPath(row: candidates.count, section: 0)
-                candidates.append(candidate)
-                print("found \(candidates.count)")
+                candidatesTable.beginUpdates()
                 updateCandidateTable(hidden: false, animated: true, label: "candidate.found".localized(count: candidates.count))
                 candidatesTable.insertRows(at: [row], with: .bottom)
+                candidates.append(candidate)
+                candidatesTable.endUpdates()
                 if candidatesTable.indexPathForSelectedRow == nil {
                     candidatesTable.selectRow(at: row, animated: true, scrollPosition: .bottom)
-            }
-            
+                }
+
             case .cancelling:
                 updateCandidateTable(hidden: true, animated: true)
             
@@ -161,6 +174,13 @@ class CaptureViewController: UIViewController, BarcodeScannerDelegate {
                 default:
                     lookup(text: search)
             }
+        }
+    }
+    
+    @IBAction func toggleScanner(_ sender: Any) {
+        let view = imageView!
+        UIView.animate(withDuration: 0.5) {
+            view.isHidden = !view.isHidden
         }
     }
     
