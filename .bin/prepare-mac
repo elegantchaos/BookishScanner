@@ -1,0 +1,15 @@
+set -e
+rm -rf .build
+source make-tools
+
+echo "***************"
+echo "Preparing macOS"
+echo "***************"
+
+rt set scheme ActionStatus-macOS --platform macOS
+rt archive --show-output 2> /dev/null | xcpretty
+rt export
+rt notarize
+rt wait
+rt compress
+rt appcast --show-output | xcpretty

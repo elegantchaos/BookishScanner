@@ -5,9 +5,6 @@
       location = "group:/Users/developer/Projects/BookishScanner/Bookish Scanner/BookishScanner.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../Localization">
-   </FileRef>
-   <FileRef
       location = "group:../ISBN">
    </FileRef>
    <FileRef
