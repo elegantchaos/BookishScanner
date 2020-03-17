@@ -27,14 +27,12 @@ class CaptureViewController: UIViewController, BarcodeScannerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        barcodeView.text = "scanner.startup".localized
         lookupSpinner.isHidden = true
         imageView.isHidden = true
-        candidatesTable.isHidden = true
         lookupManager = Application.shared.lookupManager
         candidatesTable.dataSource = self
         candidatesTable.delegate = self
-        
+        updateCandidateTable(hidden: true, animated: false, label: "scanner.startup".localized)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,32 +95,59 @@ class CaptureViewController: UIViewController, BarcodeScannerDelegate {
     func lookupUpdate(session: LookupSession, state: LookupSession.State) {
         switch state {
             case .starting:
-                barcodeView.text = "candidate.lookup.start".localized(with: ["search": session.search])
                 lookupSpinner.startAnimating()
                 lookupSpinner.isHidden = false
                 candidates.removeAll()
-                candidatesTable.isHidden = true
-                candidatesTable.reloadData()
+                updateCandidateTable(hidden: true, animated: true, label: "candidate.lookup.start".localized(with: ["search": session.search]), reload: true)
             
             case .done:
-                barcodeView.text = "candidate.found".localized(count: candidates.count)
+                updateCandidateTable(hidden: false, animated: true, label: "candidate.found".localized(count: candidates.count))
                 lookupSpinner.stopAnimating()
                 lookupSpinner.isHidden = true
             
             case .foundCandidate(let candidate):
                 let row = IndexPath(row: candidates.count, section: 0)
                 candidates.append(candidate)
-                candidatesTable.isHidden = false
+                print("found \(candidates.count)")
+                updateCandidateTable(hidden: false, animated: true, label: "candidate.found".localized(count: candidates.count))
                 candidatesTable.insertRows(at: [row], with: .bottom)
                 if candidatesTable.indexPathForSelectedRow == nil {
                     candidatesTable.selectRow(at: row, animated: true, scrollPosition: .bottom)
             }
             
             case .cancelling:
-                candidatesTable.isHidden = true
+                updateCandidateTable(hidden: true, animated: true)
             
             default:
                 break
+        }
+    }
+    
+    func updateCandidateTable(hidden: Bool = false, animated: Bool = true, label: String? = nil, reload: Bool = false) {
+        let tableView = candidatesTable!
+        let labelView = barcodeView!
+
+        labelView.text = label
+
+        let labelHidden = label?.isEmpty ?? true
+        let hiddenChanged = (tableView.isHidden != hidden) || (labelView.isHidden != labelHidden)
+        let needChange = hiddenChanged || reload
+        if needChange {
+            let change = {
+
+                if hiddenChanged {
+                    labelView.isHidden = labelHidden
+                    tableView.isHidden = hidden
+                }
+                if reload {
+                    tableView.reloadData()
+                }
+            }
+            if animated {
+                UIView.animate(withDuration: 0.5, animations: change)
+            } else {
+                change()
+            }
         }
     }
     
@@ -141,7 +166,7 @@ class CaptureViewController: UIViewController, BarcodeScannerDelegate {
     
     @IBAction func textChanged(_ sender: Any) {
         lookup?.cancel()
-        candidatesTable.isHidden = lookupQuery.isEmpty || (lookupQuery != searchField.text)
+        updateCandidateTable(hidden: lookupQuery.isEmpty || (lookupQuery != searchField.text), animated: true)
     }
 }
 
