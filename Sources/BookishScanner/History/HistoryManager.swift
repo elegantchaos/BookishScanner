@@ -6,17 +6,16 @@
 import Foundation
 import Logger
 
-let itemsManagerChannel = Channel("ItemsManager")
-
+let historyManagerChannel = Channel("History")
 
 class HistoryManager {
-    static let itemsUpdatedNotification = NSNotification.Name(rawValue: "com.elegantchaos.bookish.scanner.history.updated")
+    static let historyUpdatedNotification = NSNotification.Name(rawValue: "com.elegantchaos.bookish.scanner.history.updated")
 
     internal let store: NSUbiquitousKeyValueStore
     internal var order: [String] = []
     internal var items: [String:HistoryItem] = [:]
-    internal let stateKey: String = "State"
-    internal let prefix = "Item:"
+    internal let stateKey: String = "History"
+    internal let itemPrefix = "Item:"
     
     public var count: Int { items.count }
 
@@ -35,25 +34,25 @@ class HistoryManager {
         order.append(uuid)
         
         DispatchQueue.main.async {
-            NotificationCenter.default.post(name: HistoryManager.itemsUpdatedNotification, object: self)
+            NotificationCenter.default.post(name: HistoryManager.historyUpdatedNotification, object: self)
         }
     }
     
     func load(fromStoreKey key: String, manager: LookupManager) {
         let decoder = JSONDecoder()
-        let keys = store.dictionaryRepresentation.keys.filter({ $0.starts(with: prefix) })
+        let keys = store.dictionaryRepresentation.keys.filter({ $0.starts(with: itemPrefix) })
             for key in keys {
                 if let jsonData = store.data(forKey: key) {
                     do {
                         let decoded = try decoder.decode(CodableHistoryItem.self, from: jsonData)
                         if let candidate = manager.restore(persisted: decoded.candidate) {
-                            let uuid = String(key.suffix(from: key.index(key.startIndex, offsetBy: prefix.count)))
+                            let uuid = String(key.suffix(from: key.index(key.startIndex, offsetBy: itemPrefix.count)))
                             items[uuid] = HistoryItem(query: decoded.query, candidate: candidate, date: decoded.date)
                             order.append(uuid)
                         }
                     } catch {
                         let json = String(data: jsonData, encoding: .utf8) ?? "<json unreadable>"
-                        itemsManagerChannel.log("Failed to restore item \(json).\n\nError:\(error)")
+                        historyManagerChannel.log("Failed to restore item \(json).\n\nError:\(error)")
                     }
                 }
             }

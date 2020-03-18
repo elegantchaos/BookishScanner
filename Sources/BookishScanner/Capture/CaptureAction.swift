@@ -13,7 +13,7 @@ extension ActionKey {
 public class CaptureAction: Action {
     public override func perform(context: ActionContext, completed: @escaping Completion) {
         if let candidate = context[.candidate] as? GoogleLookupCandidate, let query = context[.query] as? String {
-            Application.shared.itemStore.add(item: ConfirmedItem(query: query, candidate: candidate))
+            Application.shared.itemStore.add(item: HistoryItem(query: query, candidate: candidate))
         }
         completed(.ok)
     }

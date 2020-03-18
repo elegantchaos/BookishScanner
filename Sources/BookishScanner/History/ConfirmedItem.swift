@@ -5,8 +5,7 @@
 
 import Foundation
 
-/// History item in a form that can be coded.
-struct CodableHistoryItem: Codable {
+struct ConfirmedCodable: Codable {
     let query: String
     let date: Date
     let candidate: LookupCandidate.Persisted
@@ -18,11 +17,6 @@ struct CodableHistoryItem: Codable {
     }
 }
 
-
-/// History item.
-/// Contains a record of the query used to find the item,
-/// the date the query was submitted, and the lookup candidate that
-/// was returned.
 struct HistoryItem {
     let query: String
     let candidate: LookupCandidate
@@ -33,5 +27,15 @@ struct HistoryItem {
         self.candidate = candidate
         self.date = date ?? Date()
     }
+
+    init(stringLiteral value: StringLiteralType) {
+        self.query = value
+        self.candidate = LookupCandidate(service: LookupService(name: "literal"))
+        self.date = Date()
+    }
+
+}
+
+extension HistoryItem: ExpressibleByStringLiteral {
 }
 

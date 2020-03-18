@@ -16,7 +16,6 @@ class HistoryViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         itemStore = Application.shared.itemStore
-        navigationItem.rightBarButtonItem = editButtonItem
         observer = NotificationCenter.default.addObserver(forName: HistoryManager.historyUpdatedNotification, object: itemStore, queue: OperationQueue.main) {_ in
             self.tableView.reloadData()
         }

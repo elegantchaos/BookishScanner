@@ -198,6 +198,7 @@ extension CaptureViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    
 }
 
 extension CaptureViewController: ActionContextProvider {

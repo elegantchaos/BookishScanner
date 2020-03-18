@@ -13,7 +13,7 @@ class Application: BasicApplication {
     let lookupManager = LookupManager()
     let actionManager = ActionManagerMobile()
     let imageCache = ImageCache<UIImageFactory>()
-    let itemStore = ConfirmedItemsManager()
+    let itemStore = HistoryManager()
     var itemObserver: Any?
     
     override func setUp(withOptions options: LaunchOptions) {
@@ -22,7 +22,7 @@ class Application: BasicApplication {
         lookupManager.register(service: GoogleLookupService(name: "Google"))
 
         itemStore.load(fromStoreKey: stateKey, manager: lookupManager)
-        itemObserver = NotificationCenter.default.addObserver(forName: ConfirmedItemsManager.itemsUpdatedNotification, object: itemStore, queue: OperationQueue.main) {_ in
+        itemObserver = NotificationCenter.default.addObserver(forName: HistoryManager.historyUpdatedNotification, object: itemStore, queue: OperationQueue.main) {_ in
             self.saveItems()
         }
 
