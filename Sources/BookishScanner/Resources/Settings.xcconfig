@@ -1,0 +1,17 @@
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+//  Created by Sam Deane on 14/02/20.
+//  All code (c) 2020 - present day, Elegant Chaos Limited.
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+#include "Dependencies/ReleaseTools/ReleaseTools.xcconfig"
+
+CONFIG_ROOT = $(SOURCE_ROOT)/Configs
+
+RT_VERSION = 1.0
+RT_PRODUCT_NAME = Bookish Scanner
+RT_SHORT_NAME = BookishScanner
+RT_BUNDLE_IDENTIFIER = com.elegantchaos.bookish.scanner
+RT_TEAM = 2H48644JM2
+
+SWIFT_OBJC_BRIDGING_HEADER =
+SUPPORTS_MACCATALYST = YES

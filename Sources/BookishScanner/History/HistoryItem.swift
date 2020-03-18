@@ -5,27 +5,19 @@
 
 import Foundation
 
-protocol ConfirmedItemRepresentable {
-    var name: String? { get }
-    var summary: String { get }
-    var isbn: String? { get }
-    var serviceName: String { get }
-    var serviceData: String { get }
-}
-
 struct ConfirmedCodable: Codable {
     let query: String
     let date: Date
     let candidate: LookupCandidate.Persisted
     
-    init(from item: ConfirmedItem) {
+    init(from item: HistoryItem) {
         query = item.query
         date = item.date
         candidate = item.candidate.persisted
     }
 }
 
-struct ConfirmedItem {
+struct HistoryItem {
     let query: String
     let candidate: LookupCandidate
     let date: Date
@@ -44,6 +36,6 @@ struct ConfirmedItem {
 
 }
 
-extension ConfirmedItem: ExpressibleByStringLiteral {
+extension HistoryItem: ExpressibleByStringLiteral {
 }
 

@@ -12,14 +12,18 @@
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>$RT_COPYRIGHT</string>
 	<key>CFBundleIconName</key>
 	<string>AppIcon</string>
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>$RT_VERSION</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$RT_BUILD</string>
+	<key>Commit</key>
+	<string>$RT_COMMIT</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
 	<key>NSCameraUsageDescription</key>

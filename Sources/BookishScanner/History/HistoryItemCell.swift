@@ -5,7 +5,7 @@
 
 import UIKit
 
-class ConfirmedItemCell: UITableViewCell {
+class HistoryItemCell: UITableViewCell {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var summaryLabel: UILabel!
 }

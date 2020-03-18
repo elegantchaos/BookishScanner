@@ -5,8 +5,8 @@
 
 import UIKit
 
-class ConfirmedItemsController: UITableViewController {
-    var itemStore: ConfirmedItemsManager?
+class HistoryViewController: UITableViewController {
+    var itemStore: HistoryManager?
     var observer: Any?
     
     @IBAction func handleEdit(_ sender: Any) {
@@ -16,14 +16,14 @@ class ConfirmedItemsController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         itemStore = Application.shared.itemStore
-        observer = NotificationCenter.default.addObserver(forName: ConfirmedItemsManager.itemsUpdatedNotification, object: itemStore, queue: OperationQueue.main) {_ in
+        observer = NotificationCenter.default.addObserver(forName: HistoryManager.historyUpdatedNotification, object: itemStore, queue: OperationQueue.main) {_ in
             self.tableView.reloadData()
         }
     }
 
     deinit {
         if let observer = observer {
-            NotificationCenter.default.removeObserver(observer, name: ConfirmedItemsManager.itemsUpdatedNotification, object: itemStore)
+            NotificationCenter.default.removeObserver(observer, name: HistoryManager.historyUpdatedNotification, object: itemStore)
         }
     }
     
@@ -36,7 +36,7 @@ class ConfirmedItemsController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "item") as! ConfirmedItemCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "item") as! HistoryItemCell
         if let item = itemStore?.item(indexPath.row), let candidate = item.candidate as? ConfirmedItemCellRepresentable {
             cell.nameLabel.text = candidate.itemName
             cell.summaryLabel.text = candidate.itemSummary
