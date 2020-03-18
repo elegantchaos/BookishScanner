@@ -13,35 +13,37 @@ protocol ConfirmedItemRepresentable {
     var serviceData: String { get }
 }
 
-struct ConfirmedItem: Codable {
+struct ConfirmedCodable: Codable {
     let query: String
-    let name: String
-    let summary: String?
-    let isbn: String?
-    let captured: Date
-    var service: String
-    var raw: String
+    let date: Date
+    let candidate: LookupCandidate.Persisted
+    
+    init(from item: ConfirmedItem) {
+        query = item.query
+        date = item.date
+        candidate = item.candidate.persisted
+    }
+}
+
+struct ConfirmedItem {
+    let query: String
+    let candidate: LookupCandidate
+    let date: Date
+
+    init(query: String, candidate: LookupCandidate, date: Date? = nil) {
+        self.query = query
+        self.candidate = candidate
+        self.date = date ?? Date()
+    }
+
+    init(stringLiteral value: StringLiteralType) {
+        self.query = value
+        self.candidate = LookupCandidate(service: LookupService(name: "literal"))
+        self.date = Date()
+    }
+
 }
 
 extension ConfirmedItem: ExpressibleByStringLiteral {
-    init(query: String, candidate: ConfirmedItemRepresentable) {
-        self.query = query
-        self.name = candidate.name ?? query
-        self.summary = candidate.summary
-        self.isbn = candidate.isbn
-        self.service = candidate.serviceName
-        self.raw = candidate.serviceData
-        self.captured = Date()
-    }
-    
-    init(stringLiteral value: StringLiteralType) {
-        self.query = value
-        self.name = value
-        self.summary = ""
-        self.isbn = nil
-        self.service = "literal"
-        self.raw = value
-        self.captured = Date()
-    }
 }
 

@@ -10,6 +10,11 @@ import ISBN
 public class GoogleLookupCandidate: LookupCandidate {
     let info: [String:Any]
     
+    override var persistedData: String {
+        guard let data = try? JSONSerialization.data(withJSONObject: info, options: .prettyPrinted), let json = String(data: data, encoding: .utf8) else { return "" }
+        return json
+    }
+    
     class func isbn(from info: [String:Any]) -> String? {
         if let identifiers = info["industryIdentifiers"] as? [[String:Any]] {
             for id in identifiers {

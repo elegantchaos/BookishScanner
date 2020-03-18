@@ -27,4 +27,8 @@ public class LookupService: Equatable, Hashable {
     public func cancel() {
         
     }
+    
+    public func restore(persisted: String) -> LookupCandidate? {
+        return nil
+    }
 }

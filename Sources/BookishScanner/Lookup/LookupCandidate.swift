@@ -7,6 +7,11 @@
 import Foundation
 
 public class LookupCandidate: CustomStringConvertible {
+    public struct Persisted: Codable {
+        let name: String
+        let data: String
+    }
+    
     public let service: LookupService
     public let title: String
     public let authors: [String]
@@ -23,6 +28,13 @@ public class LookupCandidate: CustomStringConvertible {
         self.image = image
     }
     
+    public var persisted: Persisted {
+        return Persisted(name: service.name, data: persistedData)
+    }
+
+    internal var persistedData: String {
+        return ""
+    }
     public var summary: String {
         return ""
     }

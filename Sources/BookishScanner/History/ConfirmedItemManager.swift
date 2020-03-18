@@ -38,15 +38,17 @@ class ConfirmedItemsManager {
         }
     }
     
-    func load(fromStoreKey key: String) {
+    func load(fromStoreKey key: String, manager: LookupManager) {
         let decoder = JSONDecoder()
         let keys = store.dictionaryRepresentation.keys.filter({ $0.starts(with: "ISBN:") })
             for key in keys {
                 if let jsonData = store.data(forKey: key) {
                     do {
-                        let decoded = try decoder.decode(ConfirmedItem.self, from: jsonData)
-                        items[key] = decoded
-                        order.append(key)
+                        let decoded = try decoder.decode(ConfirmedCodable.self, from: jsonData)
+                        if let candidate = manager.restore(persisted: decoded.candidate) {
+                            items[key] = ConfirmedItem(query: decoded.query, candidate: candidate, date: decoded.date)
+                            order.append(key)
+                        }
                     } catch {
                         let json = String(data: jsonData, encoding: .utf8) ?? "<json unreadable>"
                         itemsManagerChannel.log("Failed to restore item \(json).\n\nError:\(error)")
@@ -58,7 +60,8 @@ class ConfirmedItemsManager {
     func save(toStoreKey key: String) {
         let encoder = JSONEncoder()
         for (key, item) in items {
-            if let data = try? encoder.encode(item) {
+            let record = ConfirmedCodable(from: item)
+            if let data = try? encoder.encode(record) {
                 store.set(data, forKey: key)
             }
         }

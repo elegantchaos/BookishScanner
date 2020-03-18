@@ -6,5 +6,6 @@
 import UIKit
 
 class ConfirmedItemCell: UITableViewCell {
-    @IBOutlet var label: UILabel!
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var summaryLabel: UILabel!
 }

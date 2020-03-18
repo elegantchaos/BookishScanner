@@ -37,10 +37,50 @@ class ConfirmedItemsController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "item") as! ConfirmedItemCell
-        if let item = itemStore?.item(indexPath.row) {
-            cell.label.text = item.name
+        if let item = itemStore?.item(indexPath.row), let candidate = item.candidate as? ConfirmedItemCellRepresentable {
+            cell.nameLabel.text = candidate.itemName
+            cell.summaryLabel.text = candidate.itemSummary
         }
         return cell
     }
 }
 
+protocol ConfirmedItemCellRepresentable {
+    var itemName: String { get }
+    var itemSummary: String { get }
+}
+
+
+extension GoogleLookupCandidate: ConfirmedItemCellRepresentable {
+    var itemName: String {
+        return title
+    }
+
+    var itemSummary: String {
+        var summary = ""
+        if let isbn = self.isbn {
+            summary += "isbn: \(isbn)"
+        }
+        return summary
+    }
+
+}
+
+   
+//    public override func makeBook(in collection: CollectionContainer, completion: @escaping (Book) -> Void) {
+//        let info = self.info
+//        super.makeBook(in: store) { book in
+//            if let pages = info["pageCount"] as? NSNumber {
+//                book.pages = pages.int16Value
+//            }
+//
+//            if let isbn = GoogleLookupCandidate.isbn(from: info) {
+//                book.isbn = isbn
+//            }
+//
+//            if let data = try? JSONSerialization.data(withJSONObject: info, options: .prettyPrinted) {
+//                book.importRaw = String(data: data, encoding: .utf8)
+//            }
+//            completion(book)
+//        }
+//    }
