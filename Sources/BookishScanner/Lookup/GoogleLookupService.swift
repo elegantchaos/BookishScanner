@@ -53,6 +53,10 @@ public class GoogleLookupCandidate: LookupCandidate {
         super.init(service: service, title: title, authors: authors, publisher: publisher, date: date, image: image)
     }
     
+    public var isbn: String? {
+        return GoogleLookupCandidate.isbn(from: info)
+    }
+    
     public override var summary: String {
         let authors = self.authors.joined(separator: ", ")
 
@@ -62,25 +66,7 @@ public class GoogleLookupCandidate: LookupCandidate {
     public override var action: String {
         return "AddCandidate"
     }
-    
-//    public override func makeBook(in collection: CollectionContainer, completion: @escaping (Book) -> Void) {
-//        let info = self.info
-//        super.makeBook(in: store) { book in
-//            if let pages = info["pageCount"] as? NSNumber {
-//                book.pages = pages.int16Value
-//            }
-//            
-//            if let isbn = GoogleLookupCandidate.isbn(from: info) {
-//                book.isbn = isbn
-//            }
-//            
-//            if let data = try? JSONSerialization.data(withJSONObject: info, options: .prettyPrinted) {
-//                book.importRaw = String(data: data, encoding: .utf8)
-//            }
-//            completion(book)
-//        }
-//    }
-}
+ }
 
 public class GoogleLookupService: LookupService {
     var fetcher: DataFetcher = JSONDataFetcher()

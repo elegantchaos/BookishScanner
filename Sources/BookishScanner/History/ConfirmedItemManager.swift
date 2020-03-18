@@ -8,7 +8,10 @@ import Logger
 
 let itemsManagerChannel = Channel("ItemsManager")
 
+
 class ConfirmedItemsManager {
+    static let itemsUpdatedNotification = NSNotification.Name(rawValue: "com.elegantchaos.bookish.scanner.history.updated")
+
     internal let store: NSUbiquitousKeyValueStore
     internal var order: [String] = []
     internal var items: [String:ConfirmedItem] = [:]
@@ -29,6 +32,10 @@ class ConfirmedItemsManager {
         let uuid = UUID().uuidString
         items[uuid] = item
         order.append(uuid)
+        
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: ConfirmedItemsManager.itemsUpdatedNotification, object: self)
+        }
     }
     
     func load(fromStoreKey key: String) {

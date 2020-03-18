@@ -19,12 +19,7 @@ candidate.found.source = "source: {source}";
 
 search.initial = "";
 
-
-action.ViewCandidate.title = "View";
-action.ViewCandidate.short = "View";
-//action.ViewCandidate.icon = "eye";
-
-action.AddCandidate.title = "Add";
-action.AddCandidate.short = "Add";
+action.Capture.title = "Add";
+action.Capture.short = "Add";
 //action.AddCandidate.icon = "plus";
 

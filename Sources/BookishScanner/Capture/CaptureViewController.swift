@@ -16,13 +16,10 @@ class CaptureViewController: UIViewController, BarcodeScannerDelegate {
     @IBOutlet weak var searchField: UITextField!
     @IBOutlet weak var overlayView: UIView!
     @IBOutlet weak var barcodeButton: UIButton!
-    @IBOutlet weak var imageCandidateStack: UIStackView!
     
     var scanner: BarcodeScanner? = nil
-    var detected: String = ""
     var lookup: LookupSession? = nil
     var candidates: [LookupCandidate] = []
-    var lookupQuery = ""
     var imageLayer: CALayer?
     var lookupManager: LookupManager? = nil
     
@@ -58,21 +55,13 @@ class CaptureViewController: UIViewController, BarcodeScannerDelegate {
         super.viewWillDisappear(animated)
     }
     
-    override func viewWillLayoutSubviews() {
-        if let window = view.window {
-            imageCandidateStack.axis = window.frame.width > window.frame.height ? .horizontal : .vertical
-        }
-        super.viewWillLayoutSubviews()
-    }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         imageLayer?.frame = imageView.bounds
     }
     
     func detected(barcode value: String) {
-        if detected != value {
-            detected = value
+        if searchField.text != value {
             let valid = value.isISBN13
             if valid {
                 lookup(text: value)
@@ -97,7 +86,6 @@ class CaptureViewController: UIViewController, BarcodeScannerDelegate {
     func lookup(text: String) {
         lookup?.cancel()
         if let manager = lookupManager {
-            lookupQuery = text
             lookup = manager.lookup(query: text) { (session, state) in
                 self.lookupUpdate(session: session, state: state)
             }
@@ -139,18 +127,20 @@ class CaptureViewController: UIViewController, BarcodeScannerDelegate {
     func updateCandidateTable(hidden: Bool = false, animated: Bool = true, label: String? = nil, reload: Bool = false) {
         let tableView = candidatesTable!
         let labelView = barcodeView!
-
+        let scannerView = imageView!
+        
         labelView.text = label
 
         let labelHidden = label?.isEmpty ?? true
         let hiddenChanged = (tableView.isHidden != hidden) || (labelView.isHidden != labelHidden)
         let needChange = hiddenChanged || reload
         if needChange {
+            let hideScanner = (scanner == nil) || !hidden
             let change = {
-
                 if hiddenChanged {
                     labelView.isHidden = labelHidden
                     tableView.isHidden = hidden
+                    scannerView.isHidden = hideScanner
                 }
                 if reload {
                     tableView.reloadData()
@@ -186,7 +176,7 @@ class CaptureViewController: UIViewController, BarcodeScannerDelegate {
     
     @IBAction func textChanged(_ sender: Any) {
         lookup?.cancel()
-        updateCandidateTable(hidden: lookupQuery.isEmpty || (lookupQuery != searchField.text), animated: true)
+        updateCandidateTable(hidden: (lookup == nil) || (lookup?.search != searchField.text), animated: true)
     }
 }
 
@@ -207,5 +197,11 @@ extension CaptureViewController: UITableViewDelegate, UITableViewDataSource {
         cell.setup(with: candidate)
         
         return cell
+    }
+}
+
+extension CaptureViewController: ActionContextProvider {
+    func provide(context: ActionContext) {
+        context[.query] = lookup?.search
     }
 }

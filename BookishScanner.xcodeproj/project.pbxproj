@@ -19,7 +19,6 @@
 		8B79430C241F9020001B3AE7 /* Actions in Frameworks */ = {isa = PBXBuildFile; productRef = 8B79430B241F9020001B3AE7 /* Actions */; };
 		8B79430F241F9087001B3AE7 /* ActionsKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8B79430E241F9087001B3AE7 /* ActionsKit */; };
 		8B794319241FA9C0001B3AE7 /* GoogleLookupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B794312241FA9C0001B3AE7 /* GoogleLookupService.swift */; };
-		8B79431A241FA9C0001B3AE7 /* ExistingCollectionLookupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B794318241FA9C0001B3AE7 /* ExistingCollectionLookupService.swift */; };
 		8B79431B241FA9C0001B3AE7 /* LookupCandidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B794313241FA9C0001B3AE7 /* LookupCandidate.swift */; };
 		8B79431C241FA9C0001B3AE7 /* LookupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B794315241FA9C0001B3AE7 /* LookupManager.swift */; };
 		8B79431D241FA9C0001B3AE7 /* LookupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B794314241FA9C0001B3AE7 /* LookupService.swift */; };
@@ -30,7 +29,7 @@
 		8B794327241FB01A001B3AE7 /* ApplicationExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 8B794326241FB01A001B3AE7 /* ApplicationExtensions */; };
 		8B79432B241FB2A8001B3AE7 /* CandidateRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B79432A241FB2A8001B3AE7 /* CandidateRow.swift */; };
 		8B79432D241FB46C001B3AE7 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B79432C241FB46C001B3AE7 /* ImageCache.swift */; };
-		8B79432F241FB518001B3AE7 /* LookupAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B79432E241FB518001B3AE7 /* LookupAction.swift */; };
+		8B79432F241FB518001B3AE7 /* CaptureAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B79432E241FB518001B3AE7 /* CaptureAction.swift */; };
 		8B79433A241FCC87001B3AE7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B794339241FCC87001B3AE7 /* Default-568h@2x.png */; };
 		8B79433C241FCD1F001B3AE7 /* ConfirmedItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B79433B241FCD1F001B3AE7 /* ConfirmedItemCell.swift */; };
 		8B79433E241FCE1E001B3AE7 /* ConfirmedItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B79433D241FCE1E001B3AE7 /* ConfirmedItemManager.swift */; };
@@ -70,11 +69,10 @@
 		8B794315241FA9C0001B3AE7 /* LookupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupManager.swift; sourceTree = "<group>"; };
 		8B794316241FA9C0001B3AE7 /* AmazonLookupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazonLookupService.swift; sourceTree = "<group>"; };
 		8B794317241FA9C0001B3AE7 /* LookupSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupSession.swift; sourceTree = "<group>"; };
-		8B794318241FA9C0001B3AE7 /* ExistingCollectionLookupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistingCollectionLookupService.swift; sourceTree = "<group>"; };
 		8B794320241FABD6001B3AE7 /* DataFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
 		8B79432A241FB2A8001B3AE7 /* CandidateRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateRow.swift; sourceTree = "<group>"; };
 		8B79432C241FB46C001B3AE7 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
-		8B79432E241FB518001B3AE7 /* LookupAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LookupAction.swift; sourceTree = "<group>"; };
+		8B79432E241FB518001B3AE7 /* CaptureAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureAction.swift; sourceTree = "<group>"; };
 		8B794339241FCC87001B3AE7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		8B79433B241FCD1F001B3AE7 /* ConfirmedItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmedItemCell.swift; sourceTree = "<group>"; };
 		8B79433D241FCE1E001B3AE7 /* ConfirmedItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmedItemManager.swift; sourceTree = "<group>"; };
@@ -117,33 +115,14 @@
 		8B7942EE241F8C1E001B3AE7 /* BookishScanner */ = {
 			isa = PBXGroup;
 			children = (
-				8B794316241FA9C0001B3AE7 /* AmazonLookupService.swift */,
-				8B7942EF241F8C1E001B3AE7 /* Application.swift */,
-				8B7942F8241F8C1F001B3AE7 /* Assets.xcassets */,
 				8B794304241F8CC8001B3AE7 /* BarcodeScanner.swift */,
-				8B794303241F8C43001B3AE7 /* Bookish Scanner.entitlements */,
-				8B79432A241FB2A8001B3AE7 /* CandidateRow.swift */,
-				8B1912E92421278B00CD7A86 /* Capture.storyboard */,
-				8B794308241F8F6F001B3AE7 /* CaptureViewController.swift */,
-				8B79433F241FCEB4001B3AE7 /* ConfirmedItem.swift */,
-				8B79433B241FCD1F001B3AE7 /* ConfirmedItemCell.swift */,
-				8B79433D241FCE1E001B3AE7 /* ConfirmedItemManager.swift */,
-				8B7942F3241F8C1E001B3AE7 /* ConfirmedItemsController.swift */,
 				8B794320241FABD6001B3AE7 /* DataFetcher.swift */,
-				8B794339241FCC87001B3AE7 /* Default-568h@2x.png */,
-				8B794318241FA9C0001B3AE7 /* ExistingCollectionLookupService.swift */,
-				8B794312241FA9C0001B3AE7 /* GoogleLookupService.swift */,
 				8B79432C241FB46C001B3AE7 /* ImageCache.swift */,
-				8B7942FD241F8C1F001B3AE7 /* Info.plist */,
-				8B7942FA241F8C1F001B3AE7 /* LaunchScreen.storyboard */,
-				8B794341241FE85C001B3AE7 /* Localizable.strings */,
-				8B79432E241FB518001B3AE7 /* LookupAction.swift */,
-				8B794313241FA9C0001B3AE7 /* LookupCandidate.swift */,
-				8B794315241FA9C0001B3AE7 /* LookupManager.swift */,
-				8B794314241FA9C0001B3AE7 /* LookupService.swift */,
-				8B794317241FA9C0001B3AE7 /* LookupSession.swift */,
-				8B7942F5241F8C1E001B3AE7 /* Main.storyboard */,
-				8B7942F1241F8C1E001B3AE7 /* SceneDelegate.swift */,
+				8BD95DEA242264A10028D903 /* Application */,
+				8BD95DE8242264510028D903 /* Capture */,
+				8BD95DEB2422695A0028D903 /* History */,
+				8BD95DE7242263F50028D903 /* Lookup */,
+				8BD95DE9242264830028D903 /* Resources */,
 			);
 			name = BookishScanner;
 			path = Sources/BookishScanner;
@@ -154,6 +133,64 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8BD95DE7242263F50028D903 /* Lookup */ = {
+			isa = PBXGroup;
+			children = (
+				8B794316241FA9C0001B3AE7 /* AmazonLookupService.swift */,
+				8B794312241FA9C0001B3AE7 /* GoogleLookupService.swift */,
+				8B794313241FA9C0001B3AE7 /* LookupCandidate.swift */,
+				8B794315241FA9C0001B3AE7 /* LookupManager.swift */,
+				8B794314241FA9C0001B3AE7 /* LookupService.swift */,
+				8B794317241FA9C0001B3AE7 /* LookupSession.swift */,
+			);
+			path = Lookup;
+			sourceTree = "<group>";
+		};
+		8BD95DE8242264510028D903 /* Capture */ = {
+			isa = PBXGroup;
+			children = (
+				8B79432E241FB518001B3AE7 /* CaptureAction.swift */,
+				8B79432A241FB2A8001B3AE7 /* CandidateRow.swift */,
+				8B1912E92421278B00CD7A86 /* Capture.storyboard */,
+				8B794308241F8F6F001B3AE7 /* CaptureViewController.swift */,
+			);
+			path = Capture;
+			sourceTree = "<group>";
+		};
+		8BD95DE9242264830028D903 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8B794303241F8C43001B3AE7 /* Bookish Scanner.entitlements */,
+				8B7942FD241F8C1F001B3AE7 /* Info.plist */,
+				8B794339241FCC87001B3AE7 /* Default-568h@2x.png */,
+				8B794341241FE85C001B3AE7 /* Localizable.strings */,
+				8B7942F8241F8C1F001B3AE7 /* Assets.xcassets */,
+				8B7942FA241F8C1F001B3AE7 /* LaunchScreen.storyboard */,
+				8B7942F5241F8C1E001B3AE7 /* Main.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		8BD95DEA242264A10028D903 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				8B7942EF241F8C1E001B3AE7 /* Application.swift */,
+				8B7942F1241F8C1E001B3AE7 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		8BD95DEB2422695A0028D903 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				8B79433F241FCEB4001B3AE7 /* ConfirmedItem.swift */,
+				8B79433B241FCD1F001B3AE7 /* ConfirmedItemCell.swift */,
+				8B79433D241FCE1E001B3AE7 /* ConfirmedItemManager.swift */,
+				8B7942F3241F8C1E001B3AE7 /* ConfirmedItemsController.swift */,
+			);
+			path = History;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,9 +285,8 @@
 				8B794321241FABD6001B3AE7 /* DataFetcher.swift in Sources */,
 				8B79431E241FA9C0001B3AE7 /* LookupSession.swift in Sources */,
 				8B79431F241FA9C0001B3AE7 /* AmazonLookupService.swift in Sources */,
-				8B79431A241FA9C0001B3AE7 /* ExistingCollectionLookupService.swift in Sources */,
 				8B79433C241FCD1F001B3AE7 /* ConfirmedItemCell.swift in Sources */,
-				8B79432F241FB518001B3AE7 /* LookupAction.swift in Sources */,
+				8B79432F241FB518001B3AE7 /* CaptureAction.swift in Sources */,
 				8B79431D241FA9C0001B3AE7 /* LookupService.swift in Sources */,
 				8B7942F4241F8C1E001B3AE7 /* ConfirmedItemsController.swift in Sources */,
 				8B79432B241FB2A8001B3AE7 /* CandidateRow.swift in Sources */,
@@ -408,10 +444,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Sources/BookishScanner/Bookish Scanner.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Sources/BookishScanner/Resources/Bookish Scanner.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2H48644JM2;
-				INFOPLIST_FILE = Sources/BookishScanner/Info.plist;
+				INFOPLIST_FILE = Sources/BookishScanner/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -428,10 +464,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Sources/BookishScanner/Bookish Scanner.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Sources/BookishScanner/Resources/Bookish Scanner.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2H48644JM2;
-				INFOPLIST_FILE = Sources/BookishScanner/Info.plist;
+				INFOPLIST_FILE = Sources/BookishScanner/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -473,7 +509,7 @@
 			repositoryURL = "https://github.com/elegantchaos/Actions.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.5.0;
+				minimumVersion = 1.5.1;
 			};
 		};
 		8B79430D241F9087001B3AE7 /* XCRemoteSwiftPackageReference "ActionsKit" */ = {
@@ -481,7 +517,7 @@
 			repositoryURL = "https://github.com/elegantchaos/ActionsKit.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 1.1.0;
 			};
 		};
 		8B794322241FAF85001B3AE7 /* XCRemoteSwiftPackageReference "ISBN" */ = {
@@ -497,7 +533,7 @@
 			repositoryURL = "https://github.com/elegantchaos/ApplicationExtensions.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.7;
+				minimumVersion = 1.0.8;
 			};
 		};
 		8B794330241FBABE001B3AE7 /* XCRemoteSwiftPackageReference "Localization" */ = {

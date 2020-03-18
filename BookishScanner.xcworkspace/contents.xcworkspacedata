@@ -4,13 +4,4 @@
    <FileRef
       location = "group:BookishScanner.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:../ApplicationExtensions">
-   </FileRef>
-   <FileRef
-      location = "group:../Actions">
-   </FileRef>
-   <FileRef
-      location = "group:../ActionsKit">
-   </FileRef>
 </Workspace>

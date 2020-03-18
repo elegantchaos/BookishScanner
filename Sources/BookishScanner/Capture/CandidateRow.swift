@@ -25,16 +25,11 @@ class CandidateRow: UITableViewCell {
         thumbnailHeightConstraint.constant = 32 // scene.viewState.thumbnailSize
         
         sourceLabel.text = "candidate.found.source".localized(with: ["source": candidate.service.name])
-        if let book = candidate.existingBook {
-//            authorsLabel.text = book.summaryItems(mode: .series).joined(separator: ", ")
-            addButton.actionID = "ViewCandidate"
-        } else {
-            authorsLabel.text = candidate.authors.joined(separator: ", ")
-            addButton.actionID = "AddCandidate"
-            if let urlString = candidate.image, let url = URL(string: urlString) {
-                application.imageCache.image(for: url) { (image) in
-                    self.coverView.image = image
-                }
+        authorsLabel.text = candidate.authors.joined(separator: ", ")
+        addButton.actionID = "Capture"
+        if let urlString = candidate.image, let url = URL(string: urlString) {
+            application.imageCache.image(for: url) { (image) in
+                self.coverView.image = image
             }
         }
         validateButtons(with: application.actionManager)
@@ -43,6 +38,6 @@ class CandidateRow: UITableViewCell {
 
 extension CandidateRow: ActionContextProvider {
     func provide(context: ActionContext) {
-        context[.candidateKey] = candidate
+        context[.candidate] = candidate
     }
 }
