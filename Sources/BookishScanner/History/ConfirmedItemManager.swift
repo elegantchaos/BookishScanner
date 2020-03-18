@@ -16,6 +16,7 @@ class ConfirmedItemsManager {
     internal var order: [String] = []
     internal var items: [String:ConfirmedItem] = [:]
     internal let stateKey: String = "State"
+    internal let prefix = "Item:"
     
     public var count: Int { items.count }
 
@@ -40,14 +41,15 @@ class ConfirmedItemsManager {
     
     func load(fromStoreKey key: String, manager: LookupManager) {
         let decoder = JSONDecoder()
-        let keys = store.dictionaryRepresentation.keys.filter({ $0.starts(with: "ISBN:") })
+        let keys = store.dictionaryRepresentation.keys.filter({ $0.starts(with: prefix) })
             for key in keys {
                 if let jsonData = store.data(forKey: key) {
                     do {
                         let decoded = try decoder.decode(ConfirmedCodable.self, from: jsonData)
                         if let candidate = manager.restore(persisted: decoded.candidate) {
-                            items[key] = ConfirmedItem(query: decoded.query, candidate: candidate, date: decoded.date)
-                            order.append(key)
+                            let uuid = String(key.suffix(from: key.index(key.startIndex, offsetBy: prefix.count)))
+                            items[uuid] = ConfirmedItem(query: decoded.query, candidate: candidate, date: decoded.date)
+                            order.append(uuid)
                         }
                     } catch {
                         let json = String(data: jsonData, encoding: .utf8) ?? "<json unreadable>"
@@ -59,10 +61,10 @@ class ConfirmedItemsManager {
     
     func save(toStoreKey key: String) {
         let encoder = JSONEncoder()
-        for (key, item) in items {
+        for (uuid, item) in items {
             let record = ConfirmedCodable(from: item)
             if let data = try? encoder.encode(record) {
-                store.set(data, forKey: key)
+                store.set(data, forKey: "Item:\(uuid)")
             }
         }
     }

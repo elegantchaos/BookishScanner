@@ -18,13 +18,14 @@ class Application: BasicApplication {
     
     override func setUp(withOptions options: LaunchOptions) {
         super.setUp(withOptions: options)
-        
+
+        lookupManager.register(service: GoogleLookupService(name: "Google"))
+
         itemStore.load(fromStoreKey: stateKey, manager: lookupManager)
         itemObserver = NotificationCenter.default.addObserver(forName: ConfirmedItemsManager.itemsUpdatedNotification, object: itemStore, queue: OperationQueue.main) {_ in
             self.saveItems()
         }
 
-        lookupManager.register(service: GoogleLookupService(name: "Google"))
         
         actionManager.installResponder()
         install(responder: actionManager.responder)

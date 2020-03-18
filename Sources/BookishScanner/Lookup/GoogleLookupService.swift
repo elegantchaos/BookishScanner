@@ -102,4 +102,10 @@ public class GoogleLookupService: LookupService {
 
         session.done(service: self)
     }
+    
+    public override func restore(persisted: String) -> LookupCandidate? {
+        guard let data = persisted.data(using: .utf8), let object = try? JSONSerialization.jsonObject(with: data, options: []), let info = object as? [String:Any] else { return nil }
+        return GoogleLookupCandidate(info: info, service: self)
+    }
+
 }
