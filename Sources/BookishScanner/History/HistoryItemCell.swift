@@ -6,6 +6,5 @@
 import UIKit
 
 class HistoryItemCell: UITableViewCell {
-    @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var summaryLabel: UILabel!
+    @IBOutlet weak var stack: UIStackView!
 }

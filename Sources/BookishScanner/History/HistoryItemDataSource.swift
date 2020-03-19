@@ -20,8 +20,10 @@ class HistoryItemDataSource: UITableViewDiffableDataSource<HistorySection, Histo
             cellProvider: {  tableView, indexPath, item in
                 let cell = tableView.dequeueReusableCell(withIdentifier: "item") as! HistoryItemCell
                 if let candidate = item.candidate as? ConfirmedItemCellRepresentable {
-                    cell.nameLabel.text = candidate.itemName
-                    cell.summaryLabel.text = candidate.itemSummary
+                    let storyboard = UIStoryboard(name: "Candidate", bundle: nil)
+                    let vc = storyboard.instantiateInitialViewController() as! CandidateViewController
+                    vc.candidate = item.candidate
+                    cell.stack.insertArrangedSubview(vc.view, at: 0)
                 }
                 return cell
         }

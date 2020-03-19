@@ -12,7 +12,8 @@ class CandidateRow: UITableViewCell {
     
     var candidate: LookupCandidate? = nil
     
-    func setup(with candidate: LookupCandidate, storyboard: UIStoryboard) {
+    func setup(with candidate: LookupCandidate) {
+        let storyboard = UIStoryboard(name: "Candidate", bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! CandidateViewController
         vc.candidate = candidate
         self.candidate = candidate
