@@ -51,7 +51,7 @@ class HistoryManager {
     public func postUpdateNotification(reason: UpdateReason) {
         DispatchQueue.main.async {
             let notification = Notification(name: HistoryManager.historyUpdatedNotification, object: self, userInfo: ["reason": reason])
-            NotificationCenter.default.post(notification)
+            NotificationQueue.default.enqueue(notification, postingStyle: .whenIdle, coalesceMask: .onName, forModes: nil)
         }
     }
     

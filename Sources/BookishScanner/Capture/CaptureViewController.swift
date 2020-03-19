@@ -48,6 +48,8 @@ class CaptureViewController: UIViewController, BarcodeScannerDelegate {
             self.searchField.text = nil
             self.updateCandidateTable(hidden: true, animated: true, label: "scanner.startup".localized)
         }
+        
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageTapped(_:))))
     }
     
     override func viewWillAppear(_ animated: Bool) {
