@@ -9,10 +9,12 @@ class HistoryViewController: UITableViewController {
     var itemStore: HistoryManager?
     var observer: Any?
     
-    @IBAction func handleEdit(_ sender: Any) {
-        tableView.isEditing = !tableView.isEditing
-    }
-    
+    deinit {
+         if let observer = observer {
+             NotificationCenter.default.removeObserver(observer, name: HistoryManager.historyUpdatedNotification, object: itemStore)
+         }
+     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         itemStore = Application.shared.itemStore
@@ -22,12 +24,6 @@ class HistoryViewController: UITableViewController {
         }
     }
 
-    deinit {
-        if let observer = observer {
-            NotificationCenter.default.removeObserver(observer, name: HistoryManager.historyUpdatedNotification, object: itemStore)
-        }
-    }
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -43,6 +39,15 @@ class HistoryViewController: UITableViewController {
             cell.summaryLabel.text = candidate.itemSummary
         }
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+            case .delete:
+                itemStore?.remove(at: indexPath.row)
+            default:
+                break
+        }
     }
 }
 

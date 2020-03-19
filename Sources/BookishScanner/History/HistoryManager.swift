@@ -10,7 +10,13 @@ let historyManagerChannel = Channel("History")
 
 class HistoryManager {
     static let historyUpdatedNotification = NSNotification.Name(rawValue: "com.elegantchaos.bookish.scanner.history.updated")
-
+    
+    enum UpdateReason {
+        case addition
+        case deletion
+        case reload
+    }
+    
     internal let store: NSUbiquitousKeyValueStore
     internal var order: [String] = []
     internal var items: [String:HistoryItem] = [:]
@@ -32,9 +38,20 @@ class HistoryManager {
         let uuid = UUID().uuidString
         items[uuid] = item
         order.append(uuid)
-        
+        postUpdateNotification(reason: .addition)
+    }
+    
+    public func remove(at index: Int) {
+        let uuid = order[index]
+        order.remove(at: index)
+        items[uuid] = nil
+        postUpdateNotification(reason: .deletion)
+    }
+    
+    public func postUpdateNotification(reason: UpdateReason) {
         DispatchQueue.main.async {
-            NotificationCenter.default.post(name: HistoryManager.historyUpdatedNotification, object: self)
+            let notification = Notification(name: HistoryManager.historyUpdatedNotification, object: self, userInfo: ["reason": reason])
+            NotificationCenter.default.post(notification)
         }
     }
     

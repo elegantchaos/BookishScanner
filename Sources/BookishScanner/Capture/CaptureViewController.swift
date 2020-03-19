@@ -22,6 +22,14 @@ class CaptureViewController: UIViewController, BarcodeScannerDelegate {
     var candidates: [LookupCandidate] = []
     var imageLayer: CALayer?
     var lookupManager: LookupManager? = nil
+    var observer: Any?
+    let itemStore = Application.shared.itemStore
+
+    deinit {
+        if let observer = observer {
+            NotificationCenter.default.removeObserver(observer, name: HistoryManager.historyUpdatedNotification, object: itemStore)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +41,10 @@ class CaptureViewController: UIViewController, BarcodeScannerDelegate {
         candidatesTable.dataSource = self
         candidatesTable.delegate = self
         updateCandidateTable(hidden: true, animated: false, label: "scanner.startup".localized)
+        observer = NotificationCenter.default.addObserver(forName: HistoryManager.historyUpdatedNotification, object: itemStore, queue: OperationQueue.main) {_ in
+            self.searchField.text = nil
+            self.updateCandidateTable(hidden: true, animated: true, label: "scanner.startup".localized)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
