@@ -10,7 +10,7 @@
         <scene sceneID="Goa-7S-VFC">
             <objects>
                 <tableViewController title="Confirmed Items" id="akG-Nv-svv" customClass="HistoryViewController" customModule="BookishScanner" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" allowsSelection="NO" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="H9L-KU-Lya">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" allowsSelection="NO" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="H9L-KU-Lya">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -53,16 +53,15 @@
                                 </connections>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="akG-Nv-svv" id="y4m-2q-7y4"/>
-                            <outlet property="delegate" destination="akG-Nv-svv" id="rSf-6X-y1Y"/>
-                        </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Scan History" id="JSm-rF-Aie"/>
+                    <connections>
+                        <outlet property="tableView" destination="H9L-KU-Lya" id="niw-ln-CaS"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pRI-gJ-gWh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1745" y="380"/>
+            <point key="canvasLocation" x="-1248" y="121"/>
         </scene>
     </scenes>
 </document>

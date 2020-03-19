@@ -14,6 +14,7 @@ class HistoryManager {
     enum UpdateReason {
         case addition
         case deletion
+        case move
         case reload
     }
     
@@ -23,11 +24,12 @@ class HistoryManager {
     internal let itemPrefix = "Item:"
     
     public var count: Int { items.count }
-
+    
     public init(store: NSUbiquitousKeyValueStore = NSUbiquitousKeyValueStore.default) {
+        historyManagerChannel.log("Inited")
         self.store = store
     }
-
+    
     public func item(_ index: Int) -> HistoryItem {
         return items[index]
     }
@@ -48,34 +50,43 @@ class HistoryManager {
         postUpdateNotification(reason: .deletion)
     }
     
+    public func move(from: Int, to: Int) {
+        historyManagerChannel.log("Was: \(items.map({ $0.candidate.title })))")
+        let item = items[from]
+        items.remove(at: from)
+        items.insert(item, at: to)
+        postUpdateNotification(reason: .move)
+    }
+    
     public func postUpdateNotification(reason: UpdateReason) {
-        DispatchQueue.main.async {
-            let notification = Notification(name: HistoryManager.historyUpdatedNotification, object: self, userInfo: ["reason": reason])
-            NotificationQueue.default.enqueue(notification, postingStyle: .whenIdle, coalesceMask: .onName, forModes: nil)
-        }
+        historyManagerChannel.log("Updated to: \(items.map({ $0.candidate.title })))")
+        let notification = Notification(name: HistoryManager.historyUpdatedNotification, object: self, userInfo: ["reason": reason])
+        NotificationQueue.default.enqueue(notification, postingStyle: .whenIdle, coalesceMask: .onName, forModes: nil)
     }
     
     func load(fromStoreKey key: String, manager: LookupManager) {
+        historyManagerChannel.log("Loading state from index key \(key).")
         let decoder = JSONDecoder()
         let keys = store.array(forKey: key) as? [String] ?? store.dictionaryRepresentation.keys.filter({ $0.starts(with: itemPrefix) })
-            for key in keys {
-                if let jsonData = store.data(forKey: key) {
-                    do {
-                        let decoded = try decoder.decode(CodableHistoryItem.self, from: jsonData)
-                        if let candidate = manager.restore(persisted: decoded.candidate) {
-                            let uuid = HistoryItem.Identifier(key.suffix(from: key.index(key.startIndex, offsetBy: itemPrefix.count)))
-                            let item = HistoryItem(query: decoded.query, uuid: uuid, candidate: candidate, date: decoded.date)
-                            items.append(item)
-                        }
-                    } catch {
-                        let json = String(data: jsonData, encoding: .utf8) ?? "<json unreadable>"
-                        historyManagerChannel.log("Failed to restore item \(json).\n\nError:\(error)")
+        for key in keys {
+            if let jsonData = store.data(forKey: key) {
+                do {
+                    let decoded = try decoder.decode(CodableHistoryItem.self, from: jsonData)
+                    if let candidate = manager.restore(persisted: decoded.candidate) {
+                        let uuid = HistoryItem.Identifier(key.suffix(from: key.index(key.startIndex, offsetBy: itemPrefix.count)))
+                        let item = HistoryItem(query: decoded.query, uuid: uuid, candidate: candidate, date: decoded.date)
+                        items.append(item)
                     }
+                } catch {
+                    let json = String(data: jsonData, encoding: .utf8) ?? "<json unreadable>"
+                    historyManagerChannel.log("Failed to restore item \(json).\n\nError:\(error)")
                 }
             }
         }
+    }
     
     func save(toStoreKey key: String) {
+        historyManagerChannel.log("Saving state with index key \(key).")
         let encoder = JSONEncoder()
         var keys: [String] = []
         for item in items {

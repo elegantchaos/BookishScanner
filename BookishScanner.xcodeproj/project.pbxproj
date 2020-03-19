@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8B1912EA242129C600CD7A86 /* Capture.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B1912E92421278B00CD7A86 /* Capture.storyboard */; };
+		8B43FED52423A90500A06486 /* HistoryItemDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B43FED42423A90500A06486 /* HistoryItemDataSource.swift */; };
 		8B7942F0241F8C1E001B3AE7 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7942EF241F8C1E001B3AE7 /* Application.swift */; };
 		8B7942F2241F8C1E001B3AE7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7942F1241F8C1E001B3AE7 /* SceneDelegate.swift */; };
 		8B7942F4241F8C1E001B3AE7 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7942F3241F8C1E001B3AE7 /* HistoryViewController.swift */; };
@@ -54,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		8B1912E92421278B00CD7A86 /* Capture.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Capture.storyboard; path = Sources/BookishScanner/Base.lproj/Capture.storyboard; sourceTree = SOURCE_ROOT; };
+		8B43FED42423A90500A06486 /* HistoryItemDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItemDataSource.swift; sourceTree = "<group>"; };
 		8B7942EC241F8C1E001B3AE7 /* Bookish Scanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bookish Scanner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7942EF241F8C1E001B3AE7 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		8B7942F1241F8C1E001B3AE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				8BD95DEC2422868D0028D903 /* History.storyboard */,
 				8B79433F241FCEB4001B3AE7 /* HistoryItem.swift */,
 				8B79433B241FCD1F001B3AE7 /* HistoryItemCell.swift */,
+				8B43FED42423A90500A06486 /* HistoryItemDataSource.swift */,
 				8B79433D241FCE1E001B3AE7 /* HistoryManager.swift */,
 				8B7942F3241F8C1E001B3AE7 /* HistoryViewController.swift */,
 			);
@@ -331,6 +334,7 @@
 				8B79431F241FA9C0001B3AE7 /* AmazonLookupService.swift in Sources */,
 				8B79433C241FCD1F001B3AE7 /* HistoryItemCell.swift in Sources */,
 				8B79432F241FB518001B3AE7 /* CaptureAction.swift in Sources */,
+				8B43FED52423A90500A06486 /* HistoryItemDataSource.swift in Sources */,
 				8B79431D241FA9C0001B3AE7 /* LookupService.swift in Sources */,
 				8B7942F4241F8C1E001B3AE7 /* HistoryViewController.swift in Sources */,
 				8B79432B241FB2A8001B3AE7 /* CandidateRow.swift in Sources */,
