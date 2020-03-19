@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16095" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Yac-Wa-UPO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16095" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="akG-Nv-svv">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16084.1"/>
@@ -58,29 +58,11 @@
                             <outlet property="delegate" destination="akG-Nv-svv" id="rSf-6X-y1Y"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="JSm-rF-Aie"/>
+                    <navigationItem key="navigationItem" title="Scan History" id="JSm-rF-Aie"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pRI-gJ-gWh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1745" y="380"/>
-        </scene>
-        <!--History-->
-        <scene sceneID="hPL-tq-zVq">
-            <objects>
-                <navigationController id="Yac-Wa-UPO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="History" id="Vuv-GR-KWd"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ubw-wN-6bX">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="akG-Nv-svv" kind="relationship" relationship="rootViewController" id="Qn6-Sw-dpW"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Wpg-Ns-fb5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2516" y="380"/>
         </scene>
     </scenes>
 </document>
