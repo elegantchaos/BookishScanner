@@ -59,6 +59,7 @@ class CaptureViewController: UIViewController, BarcodeScannerDelegate {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        searchField.resignFirstResponder()
         scanner?.shutdown()
         scanner = nil
         lookup = nil
