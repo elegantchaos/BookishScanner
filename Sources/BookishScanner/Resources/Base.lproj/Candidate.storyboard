@@ -35,10 +35,10 @@
                                             <constraint firstAttribute="trailing" secondItem="OXv-Qe-y7y" secondAttribute="trailing" id="y8g-6z-CwW"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="py4-cL-JNC">
+                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="260" verticalCompressionResistancePriority="760" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="py4-cL-JNC">
                                         <rect key="frame" x="68" y="0.0" width="346" height="64"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qdx-E0-U3d">
+                                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="255" verticalCompressionResistancePriority="755" translatesAutoresizingMaskIntoConstraints="NO" id="qdx-E0-U3d">
                                                 <rect key="frame" x="0.0" y="0.0" width="346" height="20.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="753" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7Y-8e-w84">

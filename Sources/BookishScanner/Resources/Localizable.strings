@@ -15,7 +15,7 @@ candidate.lookup.start = "Looking up {search}…";
 candidate.found.none = "No candidates found";
 candidate.found.singular = "1 candidate found:";
 candidate.found.plural = "{count} candidates found:";
-candidate.found.source = "source: {source}";
+candidate.found.source = "(via {source})";
 
 search.initial = "";
 
