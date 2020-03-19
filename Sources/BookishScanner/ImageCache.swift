@@ -8,6 +8,8 @@ import Logger
 import CryptoKit
 import CommonCrypto
 
+// TODO: https://developer.apple.com/documentation/uikit/uiimage/asynchronously_loading_images_into_table_and_collection_views
+
 let imageCacheChannel = Channel("com.elegantchaos.imageCache")
 
 public protocol ImageFactory {
