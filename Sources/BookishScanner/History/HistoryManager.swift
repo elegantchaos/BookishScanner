@@ -57,7 +57,7 @@ class HistoryManager {
     
     func load(fromStoreKey key: String, manager: LookupManager) {
         let decoder = JSONDecoder()
-        let keys = store.dictionaryRepresentation.keys.filter({ $0.starts(with: itemPrefix) })
+        let keys = store.array(forKey: key) as? [String] ?? store.dictionaryRepresentation.keys.filter({ $0.starts(with: itemPrefix) })
             for key in keys {
                 if let jsonData = store.data(forKey: key) {
                     do {
@@ -77,11 +77,15 @@ class HistoryManager {
     
     func save(toStoreKey key: String) {
         let encoder = JSONEncoder()
+        var keys: [String] = []
         for (uuid, item) in items {
             let record = CodableHistoryItem(from: item)
             if let data = try? encoder.encode(record) {
-                store.set(data, forKey: "Item:\(uuid)")
+                let key = "Item:\(uuid)"
+                store.set(data, forKey: key)
+                keys.append(key)
             }
         }
+        store.set(keys, forKey: key)
     }
 }
