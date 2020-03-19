@@ -222,7 +222,7 @@ extension CaptureViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "candidate", for: indexPath) as! CandidateRow
         let candidate = candidates[indexPath.row]
         cell.detailTextLabel?.text = candidate.title
-        cell.setup(with: candidate)
+        cell.setup(with: candidate, storyboard: UIStoryboard(name: "Candidate", bundle: nil))
         
         return cell
     }

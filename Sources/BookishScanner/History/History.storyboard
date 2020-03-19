@@ -1,67 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16095" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="akG-Nv-svv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16095" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="c4d-Na-iis">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16084.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Confirmed Items-->
-        <scene sceneID="Goa-7S-VFC">
+        <!--Scan History-->
+        <scene sceneID="rs1-6W-wT0">
             <objects>
-                <tableViewController title="Confirmed Items" id="akG-Nv-svv" customClass="HistoryViewController" customModule="BookishScanner" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" allowsSelection="NO" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="H9L-KU-Lya">
+                <viewController id="c4d-Na-iis" customClass="HistoryViewController" customModule="BookishScanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nEQ-Ft-ab3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AjQ-79-c7b">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" allowsSelection="NO" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="H9L-KU-Lya">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="item" id="25u-Lt-HnY" customClass="HistoryItemCell" customModule="BookishScanner" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="414" height="45"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="25u-Lt-HnY" id="EfC-SB-REZ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tLY-JB-dbt">
+                                                            <rect key="frame" x="20" y="4" width="374" height="37"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbF-jY-gqa">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0J-X5-fIq">
+                                                                    <rect key="frame" x="0.0" y="20.5" width="374" height="16.5"/>
+                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="tLY-JB-dbt" firstAttribute="top" secondItem="EfC-SB-REZ" secondAttribute="top" constant="4" id="AgE-Bz-5Ot"/>
+                                                        <constraint firstAttribute="trailing" secondItem="tLY-JB-dbt" secondAttribute="trailing" constant="20" symbolic="YES" id="KFN-Yw-obg"/>
+                                                        <constraint firstAttribute="bottom" secondItem="tLY-JB-dbt" secondAttribute="bottom" constant="4" id="eGW-z3-M3u"/>
+                                                        <constraint firstItem="tLY-JB-dbt" firstAttribute="leading" secondItem="EfC-SB-REZ" secondAttribute="leading" constant="20" symbolic="YES" id="kdB-zG-4iV"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="nameLabel" destination="hbF-jY-gqa" id="7Qe-YK-OM6"/>
+                                                    <outlet property="summaryLabel" destination="Q0J-X5-fIq" id="3cE-62-atj"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="apL-Wq-uGE">
+                                        <rect key="frame" x="0.0" y="852" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <items>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="jpG-sn-FDE"/>
+                                            <barButtonItem title="Item" image="square.and.arrow.up" catalog="system" id="p03-7p-gW9"/>
+                                        </items>
+                                    </toolbar>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="item" id="25u-Lt-HnY" customClass="HistoryItemCell" customModule="BookishScanner" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="45"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="25u-Lt-HnY" id="EfC-SB-REZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tLY-JB-dbt">
-                                            <rect key="frame" x="20" y="4" width="374" height="37"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbF-jY-gqa">
-                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0J-X5-fIq">
-                                                    <rect key="frame" x="0.0" y="20.5" width="374" height="16.5"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="tLY-JB-dbt" firstAttribute="top" secondItem="EfC-SB-REZ" secondAttribute="top" constant="4" id="AgE-Bz-5Ot"/>
-                                        <constraint firstAttribute="trailing" secondItem="tLY-JB-dbt" secondAttribute="trailing" constant="20" symbolic="YES" id="KFN-Yw-obg"/>
-                                        <constraint firstAttribute="bottom" secondItem="tLY-JB-dbt" secondAttribute="bottom" constant="4" id="eGW-z3-M3u"/>
-                                        <constraint firstItem="tLY-JB-dbt" firstAttribute="leading" secondItem="EfC-SB-REZ" secondAttribute="leading" constant="20" symbolic="YES" id="kdB-zG-4iV"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="nameLabel" destination="hbF-jY-gqa" id="7Qe-YK-OM6"/>
-                                    <outlet property="summaryLabel" destination="Q0J-X5-fIq" id="3cE-62-atj"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                    </tableView>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="AjQ-79-c7b" secondAttribute="trailing" id="4kr-Pc-JQM"/>
+                            <constraint firstItem="AjQ-79-c7b" firstAttribute="leading" secondItem="nEQ-Ft-ab3" secondAttribute="leading" id="L1c-n4-Al0"/>
+                            <constraint firstAttribute="bottom" secondItem="AjQ-79-c7b" secondAttribute="bottom" id="QuQ-Yb-RhD"/>
+                            <constraint firstItem="AjQ-79-c7b" firstAttribute="top" secondItem="nEQ-Ft-ab3" secondAttribute="top" id="SKI-WI-Pff"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6uf-RN-67f"/>
+                    </view>
                     <navigationItem key="navigationItem" title="Scan History" id="JSm-rF-Aie"/>
                     <connections>
-                        <outlet property="tableView" destination="H9L-KU-Lya" id="niw-ln-CaS"/>
+                        <outlet property="tableView" destination="H9L-KU-Lya" id="SEW-KF-0HI"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pRI-gJ-gWh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iBv-99-iND" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1248" y="121"/>
+            <point key="canvasLocation" x="-2488" y="59"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
+    </resources>
 </document>
