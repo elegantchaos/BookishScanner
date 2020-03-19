@@ -9,6 +9,7 @@ import ActionsKit
 
 class CaptureViewController: UIViewController, BarcodeScannerDelegate {
     
+    @IBOutlet weak var rootStack: UIStackView!
     @IBOutlet weak var imageView: UIView!
     @IBOutlet weak var candidatesTable: UITableView!
     @IBOutlet weak var barcodeView: UILabel!
@@ -16,6 +17,8 @@ class CaptureViewController: UIViewController, BarcodeScannerDelegate {
     @IBOutlet weak var searchField: UITextField!
     @IBOutlet weak var overlayView: UIView!
     @IBOutlet weak var barcodeButton: UIButton!
+    @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var searchAndStatusStack: UIStackView!
     
     var scanner: BarcodeScanner? = nil
     var lookup: LookupSession? = nil
@@ -66,6 +69,12 @@ class CaptureViewController: UIViewController, BarcodeScannerDelegate {
         imageLayer = nil
         
         super.viewWillDisappear(animated)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        let spacing = CGFloat(rootStack.arrangedSubviews.count - 1) * rootStack.spacing
+        imageHeightConstraint.constant = rootStack.frame.height - (searchAndStatusStack.frame.height + spacing)
+        super.viewWillLayoutSubviews()
     }
     
     override func viewDidLayoutSubviews() {
@@ -190,6 +199,10 @@ class CaptureViewController: UIViewController, BarcodeScannerDelegate {
     @IBAction func textChanged(_ sender: Any) {
         lookup?.cancel()
         updateCandidateTable(hidden: (lookup == nil) || (lookup?.search != searchField.text), animated: true)
+    }
+    
+    @IBAction func imageTapped(_ sender: Any) {
+        searchField.resignFirstResponder()
     }
 }
 
