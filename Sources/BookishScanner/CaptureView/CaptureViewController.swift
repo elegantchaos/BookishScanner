@@ -219,7 +219,7 @@ extension CaptureViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "candidate", for: indexPath) as! CandidateRow
+        let cell = tableView.dequeueReusableCell(withIdentifier: "candidate", for: indexPath) as! CaptureItemCell
         let candidate = candidates[indexPath.row]
         cell.detailTextLabel?.text = candidate.title
         cell.setup(with: candidate)

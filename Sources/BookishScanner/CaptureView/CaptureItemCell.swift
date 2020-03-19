@@ -6,7 +6,7 @@
 import UIKit
 import Actions
 
-class CandidateRow: UITableViewCell {
+class CaptureItemCell: UITableViewCell {
     @IBOutlet weak var stack: UIStackView!
     @IBOutlet weak var addButton: UIButton!
     
@@ -23,7 +23,7 @@ class CandidateRow: UITableViewCell {
     }
 }
 
-extension CandidateRow: ActionContextProvider {
+extension CaptureItemCell: ActionContextProvider {
     func provide(context: ActionContext) {
         context[.candidate] = candidate
     }

@@ -91,21 +91,21 @@
                                         <rect key="frame" x="0.0" y="445" width="374" height="170"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="candidate" id="5wp-jz-0nV" customClass="CandidateRow" customModule="BookishScanner" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="374" height="138.5"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="candidate" id="5wp-jz-0nV" customClass="CaptureItemCell" customModule="BookishScanner" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="374" height="139"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5wp-jz-0nV" id="ZS7-es-cdy">
-                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="138.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="139"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="800" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="vXz-gE-H8V">
-                                                            <rect key="frame" x="4" y="4" width="366" height="130.5"/>
+                                                            <rect key="frame" x="4" y="4" width="366" height="131"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KTW-be-m9x">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="366" height="130.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="366" height="131"/>
                                                                     <subviews>
                                                                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="249" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="749" contentHorizontalAlignment="trailing" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JaC-K7-81o">
-                                                                            <rect key="frame" x="0.0" y="100.5" width="366" height="30"/>
+                                                                            <rect key="frame" x="0.0" y="101" width="366" height="30"/>
                                                                             <state key="normal" title="Add"/>
                                                                             <connections>
                                                                                 <action selector="performAction:" destination="dkx-z0-nzr" eventType="primaryActionTriggered" id="Xkb-yl-o2O"/>
