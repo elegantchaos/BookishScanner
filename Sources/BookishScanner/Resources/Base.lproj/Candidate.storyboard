@@ -18,25 +18,15 @@
                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="800" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="kst-Hi-9pC">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bla-p8-Fb2">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="249" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="OXv-Qe-y7y">
                                         <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="249" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="OXv-Qe-y7y">
-                                                <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="OXv-Qe-y7y" secondAttribute="height" multiplier="1:1" id="WEs-8l-2YW"/>
-                                                </constraints>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstItem="OXv-Qe-y7y" firstAttribute="leading" secondItem="bla-p8-Fb2" secondAttribute="leading" id="YVh-El-hOJ"/>
-                                            <constraint firstItem="OXv-Qe-y7y" firstAttribute="top" secondItem="bla-p8-Fb2" secondAttribute="top" id="b76-2V-SF6"/>
-                                            <constraint firstAttribute="trailing" secondItem="OXv-Qe-y7y" secondAttribute="trailing" id="y8g-6z-CwW"/>
+                                            <constraint firstAttribute="width" secondItem="OXv-Qe-y7y" secondAttribute="height" multiplier="1:1" id="WEs-8l-2YW"/>
+                                            <constraint firstAttribute="height" constant="64" id="nxq-OO-qct"/>
                                         </constraints>
-                                    </view>
+                                    </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="260" verticalCompressionResistancePriority="760" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="py4-cL-JNC">
-                                        <rect key="frame" x="68" y="0.0" width="346" height="64"/>
+                                        <rect key="frame" x="68" y="0.0" width="346" height="40.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="255" verticalCompressionResistancePriority="755" translatesAutoresizingMaskIntoConstraints="NO" id="qdx-E0-U3d">
                                                 <rect key="frame" x="0.0" y="0.0" width="346" height="20.5"/>
@@ -56,7 +46,7 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Authors" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YtV-iA-a6h">
-                                                <rect key="frame" x="0.0" y="24.5" width="346" height="39.5"/>
+                                                <rect key="frame" x="0.0" y="24.5" width="346" height="16"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -64,10 +54,6 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="py4-cL-JNC" firstAttribute="height" secondItem="kst-Hi-9pC" secondAttribute="height" id="MDw-hY-8n3"/>
-                                    <constraint firstItem="py4-cL-JNC" firstAttribute="height" secondItem="OXv-Qe-y7y" secondAttribute="height" id="TnF-3H-w6t"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <constraints>

@@ -24,20 +24,20 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="item" id="25u-Lt-HnY" customClass="HistoryItemCell" customModule="BookishScanner" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="414" height="8.5"/>
+                                                <rect key="frame" x="0.0" y="28" width="414" height="16.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="25u-Lt-HnY" id="EfC-SB-REZ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="8.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="16.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tLY-JB-dbt">
-                                                            <rect key="frame" x="20" y="4" width="374" height="0.5"/>
+                                                            <rect key="frame" x="20" y="8" width="374" height="0.5"/>
                                                         </stackView>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="tLY-JB-dbt" firstAttribute="top" secondItem="EfC-SB-REZ" secondAttribute="top" constant="4" id="AgE-Bz-5Ot"/>
+                                                        <constraint firstItem="tLY-JB-dbt" firstAttribute="top" secondItem="EfC-SB-REZ" secondAttribute="top" constant="8" id="AgE-Bz-5Ot"/>
                                                         <constraint firstAttribute="trailing" secondItem="tLY-JB-dbt" secondAttribute="trailing" constant="20" symbolic="YES" id="KFN-Yw-obg"/>
-                                                        <constraint firstAttribute="bottom" secondItem="tLY-JB-dbt" secondAttribute="bottom" constant="4" id="eGW-z3-M3u"/>
+                                                        <constraint firstAttribute="bottom" secondItem="tLY-JB-dbt" secondAttribute="bottom" constant="8" id="eGW-z3-M3u"/>
                                                         <constraint firstItem="tLY-JB-dbt" firstAttribute="leading" secondItem="EfC-SB-REZ" secondAttribute="leading" constant="20" symbolic="YES" id="kdB-zG-4iV"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
