@@ -36,7 +36,14 @@ public class LookupCandidate: CustomStringConvertible {
         return ""
     }
     public var summary: String {
-        return ""
+        return summaryItems.joined(separator: ", ")
+    }
+    
+    public var summaryItems: [String] {
+        var items: [String] = []
+        items.append(contentsOf: authors)
+        items.append(publisher)
+        return items
     }
     
     public var action: String {
@@ -46,27 +53,6 @@ public class LookupCandidate: CustomStringConvertible {
     public var existingBook: Any? {
         return nil
     }
-    
-//    public func makeBook(in collection: CollectionContainer, completion: @escaping (EntityReference) -> Void) {
-//        let book = Book(in: context)
-//
-//        book.name = title
-//        book.imageURL = image
-//        book.source = service.name
-//
-//        for author in authors {
-//            let person = Person.named(author, in: context)
-//            let relationship = person.relationship(as: Role.StandardName.author)
-//            book.addToRelationships(relationship)
-//        }
-//
-//        if !publisher.isEmpty {
-//            book.publisher = Publisher.named(publisher, in: context)
-//        }
-//
-//        book.published = date
-//        completion(book)
-//    }
     
     public var description: String {
         get {

@@ -10,14 +10,11 @@ class CaptureItemCell: UITableViewCell {
     @IBOutlet weak var stack: UIStackView!
     @IBOutlet weak var addButton: UIButton!
     
-    var candidate: LookupCandidate? = nil
+    var candidateViewController: CandidateViewController!
     
     func setup(with candidate: LookupCandidate) {
-        let storyboard = UIStoryboard(name: "Candidate", bundle: nil)
-        let vc = storyboard.instantiateInitialViewController() as! CandidateViewController
-        vc.candidate = candidate
-        self.candidate = candidate
-        stack.insertArrangedSubview(vc.view, at: 0)
+        candidateViewController = CandidateViewController.viewController(for: candidate)
+        stack.insertArrangedSubview(candidateViewController.view, at: 0)
         addButton.actionID = "Capture"
         validateButtons(with: Application.shared.actionManager)
     }
@@ -25,6 +22,6 @@ class CaptureItemCell: UITableViewCell {
 
 extension CaptureItemCell: ActionContextProvider {
     func provide(context: ActionContext) {
-        context[.candidate] = candidate
+        context[.candidate] = candidateViewController.candidate
     }
 }

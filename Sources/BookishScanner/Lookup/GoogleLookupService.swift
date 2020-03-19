@@ -61,13 +61,19 @@ public class GoogleLookupCandidate: LookupCandidate {
     public var isbn: String? {
         return GoogleLookupCandidate.isbn(from: info)
     }
-    
-    public override var summary: String {
-        let authors = self.authors.joined(separator: ", ")
 
-        return "\(title)\n\(authors)\n\(publisher)"
+    public override var summaryItems: [String] {
+        var items = super.summaryItems
+        if let pages = info["pageCount"] as? NSNumber {
+            items.append("\(pages) pages")
+        }
+        if let isbn = self.isbn {
+            items.append("ISBN: \(isbn)")
+        }
+        return items
     }
-    
+
+
     public override var action: String {
         return "AddCandidate"
     }

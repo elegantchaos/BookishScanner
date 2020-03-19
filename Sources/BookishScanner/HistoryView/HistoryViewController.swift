@@ -33,29 +33,3 @@ class HistoryViewController: UIViewController {
     }
     
 }
-
-protocol ConfirmedItemCellRepresentable {
-    var itemName: String { get }
-    var itemSummary: String { get }
-}
-
-extension GoogleLookupCandidate: ConfirmedItemCellRepresentable {
-    var itemName: String {
-        return title
-    }
-
-    var itemSummary: String {
-        var items: [String] = []
-        items.append(contentsOf: authors)
-        items.append(publisher)
-        if let pages = info["pageCount"] as? NSNumber {
-            items.append("\(pages) pages")
-        }
-        if let isbn = self.isbn {
-            items.append("ISBN: \(isbn)")
-        }
-
-        return items.joined(separator: ", ")
-    }
-
-}
