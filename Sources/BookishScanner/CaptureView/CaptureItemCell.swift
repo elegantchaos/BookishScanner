@@ -18,6 +18,12 @@ class CaptureItemCell: UITableViewCell {
         addButton.actionID = "Capture"
         validateButtons(with: Application.shared.actionManager)
     }
+    
+    override func prepareForReuse() {
+        for view in stack.arrangedSubviews {
+            stack.removeArrangedSubview(view)
+        }
+    }
 }
 
 extension CaptureItemCell: ActionContextProvider {

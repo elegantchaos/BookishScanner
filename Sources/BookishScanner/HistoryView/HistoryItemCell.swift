@@ -7,4 +7,10 @@ import UIKit
 
 class HistoryItemCell: UITableViewCell {
     @IBOutlet weak var stack: UIStackView!
+    
+    override func prepareForReuse() {
+        if let view = stack.arrangedSubviews.first {
+            stack.removeArrangedSubview(view)
+        }
+    }
 }
