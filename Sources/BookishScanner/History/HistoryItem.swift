@@ -23,15 +23,27 @@ struct CodableHistoryItem: Codable {
 /// Contains a record of the query used to find the item,
 /// the date the query was submitted, and the lookup candidate that
 /// was returned.
-struct HistoryItem {
+struct HistoryItem: Hashable {
+    typealias Identifier = String
+    
+    let uuid: Identifier
     let query: String
     let candidate: LookupCandidate
     let date: Date
 
-    init(query: String, candidate: LookupCandidate, date: Date? = nil) {
+    init(query: String, uuid: Identifier, candidate: LookupCandidate, date: Date? = nil) {
+        self.uuid = uuid
         self.query = query
         self.candidate = candidate
         self.date = date ?? Date()
+    }
+    
+    static func == (lhs: HistoryItem, rhs: HistoryItem) -> Bool {
+        return lhs.uuid == rhs.uuid
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        uuid.hash(into: &hasher)
     }
 }
 

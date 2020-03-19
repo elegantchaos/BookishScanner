@@ -18,8 +18,7 @@ class HistoryManager {
     }
     
     internal let store: NSUbiquitousKeyValueStore
-    internal var order: [String] = []
-    internal var items: [String:HistoryItem] = [:]
+    internal var items: [HistoryItem] = []
     internal let stateKey: String = "History"
     internal let itemPrefix = "Item:"
     
@@ -30,21 +29,22 @@ class HistoryManager {
     }
 
     public func item(_ index: Int) -> HistoryItem {
-        let uuid = order[index]
-        return items[uuid]!
+        return items[index]
     }
     
-    public func add(item: HistoryItem) {
+    public func item(identifiedBy uuid: HistoryItem.Identifier)-> HistoryItem {
+        return items.first(where: { $0.uuid == uuid })!
+    }
+    
+    public func add(query: String, candidate: LookupCandidate) {
         let uuid = UUID().uuidString
-        items[uuid] = item
-        order.append(uuid)
+        let item = HistoryItem(query: query, uuid: uuid, candidate: candidate)
+        items.append(item)
         postUpdateNotification(reason: .addition)
     }
     
     public func remove(at index: Int) {
-        let uuid = order[index]
-        order.remove(at: index)
-        items[uuid] = nil
+        items.remove(at: index)
         postUpdateNotification(reason: .deletion)
     }
     
@@ -63,9 +63,9 @@ class HistoryManager {
                     do {
                         let decoded = try decoder.decode(CodableHistoryItem.self, from: jsonData)
                         if let candidate = manager.restore(persisted: decoded.candidate) {
-                            let uuid = String(key.suffix(from: key.index(key.startIndex, offsetBy: itemPrefix.count)))
-                            items[uuid] = HistoryItem(query: decoded.query, candidate: candidate, date: decoded.date)
-                            order.append(uuid)
+                            let uuid = HistoryItem.Identifier(key.suffix(from: key.index(key.startIndex, offsetBy: itemPrefix.count)))
+                            let item = HistoryItem(query: decoded.query, uuid: uuid, candidate: candidate, date: decoded.date)
+                            items.append(item)
                         }
                     } catch {
                         let json = String(data: jsonData, encoding: .utf8) ?? "<json unreadable>"
@@ -78,10 +78,10 @@ class HistoryManager {
     func save(toStoreKey key: String) {
         let encoder = JSONEncoder()
         var keys: [String] = []
-        for (uuid, item) in items {
+        for item in items {
             let record = CodableHistoryItem(from: item)
             if let data = try? encoder.encode(record) {
-                let key = "Item:\(uuid)"
+                let key = "Item:\(item.uuid)"
                 store.set(data, forKey: key)
                 keys.append(key)
             }

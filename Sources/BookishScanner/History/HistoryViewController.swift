@@ -8,6 +8,7 @@ import UIKit
 class HistoryViewController: UITableViewController {
     var itemStore: HistoryManager?
     var observer: Any?
+    lazy var dataSource = makeDataSource()
     
     deinit {
          if let observer = observer {
@@ -18,29 +19,41 @@ class HistoryViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         itemStore = Application.shared.itemStore
-        navigationItem.rightBarButtonItem = editButtonItem
         observer = NotificationCenter.default.addObserver(forName: HistoryManager.historyUpdatedNotification, object: itemStore, queue: OperationQueue.main) {_ in
-            self.tableView.reloadData()
+            self.updateUI(animated: true)
         }
+
+        updateUI(animated: false)
+        navigationItem.rightBarButtonItem = editButtonItem
     }
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    enum HistorySection: CaseIterable {
+        case history
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemStore?.count ?? 0
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "item") as! HistoryItemCell
-        if let item = itemStore?.item(indexPath.row), let candidate = item.candidate as? ConfirmedItemCellRepresentable {
-            cell.nameLabel.text = candidate.itemName
-            cell.summaryLabel.text = candidate.itemSummary
+    func updateUI(animated: Bool) {
+        var snapshot = NSDiffableDataSourceSnapshot<HistorySection, HistoryItem>()
+        snapshot.appendSections([.history])
+        if let store = itemStore {
+            snapshot.appendItems(store.items)
         }
-        return cell
+        dataSource.apply(snapshot, animatingDifferences: animated)
     }
     
+    func makeDataSource() -> UITableViewDiffableDataSource<HistorySection, HistoryItem> {
+         return UITableViewDiffableDataSource(
+             tableView: tableView,
+             cellProvider: {  tableView, indexPath, item in
+                 let cell = tableView.dequeueReusableCell(withIdentifier: "item") as! HistoryItemCell
+                if let candidate = item.candidate as? ConfirmedItemCellRepresentable {
+                     cell.nameLabel.text = candidate.itemName
+                     cell.summaryLabel.text = candidate.itemSummary
+                 }
+                 return cell
+             }
+         )
+    }
+        
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
             case .delete:
@@ -63,30 +76,17 @@ extension GoogleLookupCandidate: ConfirmedItemCellRepresentable {
     }
 
     var itemSummary: String {
-        var summary = ""
-        if let isbn = self.isbn {
-            summary += "isbn: \(isbn)"
+        var items: [String] = []
+        items.append(contentsOf: authors)
+        items.append(publisher)
+        if let pages = info["pageCount"] as? NSNumber {
+            items.append("\(pages) pages")
         }
-        return summary
+        if let isbn = self.isbn {
+            items.append("ISBN: \(isbn)")
+        }
+
+        return items.joined(separator: ", ")
     }
 
 }
-
-   
-//    public override func makeBook(in collection: CollectionContainer, completion: @escaping (Book) -> Void) {
-//        let info = self.info
-//        super.makeBook(in: store) { book in
-//            if let pages = info["pageCount"] as? NSNumber {
-//                book.pages = pages.int16Value
-//            }
-//
-//            if let isbn = GoogleLookupCandidate.isbn(from: info) {
-//                book.isbn = isbn
-//            }
-//
-//            if let data = try? JSONSerialization.data(withJSONObject: info, options: .prettyPrinted) {
-//                book.importRaw = String(data: data, encoding: .utf8)
-//            }
-//            completion(book)
-//        }
-//    }
