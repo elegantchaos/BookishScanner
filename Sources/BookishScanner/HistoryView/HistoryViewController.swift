@@ -32,4 +32,7 @@ class HistoryViewController: UIViewController {
         tableView.setEditing(editing, animated: animated)
     }
     
+    @IBAction func handleExport() {
+        
+    }
 }

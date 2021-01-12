@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16095" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="c4d-Na-iis">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="c4d-Na-iis">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16084.1"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,7 +23,7 @@
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="H9L-KU-Lya">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="item" id="25u-Lt-HnY" customClass="HistoryItemCell" customModule="BookishScanner" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="414" height="16.5"/>
@@ -52,20 +54,24 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <items>
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="jpG-sn-FDE"/>
-                                            <barButtonItem title="Item" image="square.and.arrow.up" catalog="system" id="p03-7p-gW9"/>
+                                            <barButtonItem title="Item" image="square.and.arrow.up" catalog="system" id="p03-7p-gW9">
+                                                <connections>
+                                                    <action selector="handleExport" destination="c4d-Na-iis" id="nBJ-Ou-pwL"/>
+                                                </connections>
+                                            </barButtonItem>
                                         </items>
                                     </toolbar>
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="6uf-RN-67f"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="AjQ-79-c7b" secondAttribute="trailing" id="4kr-Pc-JQM"/>
                             <constraint firstItem="AjQ-79-c7b" firstAttribute="leading" secondItem="nEQ-Ft-ab3" secondAttribute="leading" id="L1c-n4-Al0"/>
                             <constraint firstAttribute="bottom" secondItem="AjQ-79-c7b" secondAttribute="bottom" id="QuQ-Yb-RhD"/>
                             <constraint firstItem="AjQ-79-c7b" firstAttribute="top" secondItem="nEQ-Ft-ab3" secondAttribute="top" id="SKI-WI-Pff"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6uf-RN-67f"/>
                     </view>
                     <navigationItem key="navigationItem" title="Scan History" id="JSm-rF-Aie"/>
                     <connections>
@@ -79,5 +85,8 @@
     </scenes>
     <resources>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
